@@ -1,0 +1,44 @@
+{
+  "xash3d-fwgs-apple-arm64.tar.xz": {
+    "url": "https://github.com/FWGS/xash3d-fwgs/releases/download/continuous/xash3d-fwgs-apple-arm64.tar.xz",
+    "sha256": "23a58e2f12220090a328f615b49a98062427c2d9fba0117937e2d7d4980e984c",
+    "bytes": 5208720,
+    "release_published_at": "2026-10-30T08:34:22Z",
+    "target_commitish": "3daa67eca9a9f9651b37d63babe6dfc8ec6961ac"
+  },
+  "xash3d-fwgs-linux-amd64.tar.gz": {
+    "url": "https://github.com/FWGS/xash3d-fwgs/releases/download/continuous/xash3d-fwgs-linux-amd64.tar.gz",
+    "sha256": "510d2b6004f37f0bb25b8b09186a8ede47bbfb8636a49492b242a849b4819ef3",
+    "bytes": 28251329,
+    "release_published_at": "2026-10-30T08:34:22Z",
+    "target_commitish": "3daa67eca9a9f9651b37d63babe6dfc8ec6961ac"
+  },
+  "xash3d-fwgs-win32-amd64.7z": {
+    "url": "https://github.com/FWGS/xash3d-fwgs/releases/download/continuous/xash3d-fwgs-win32-amd64.7z",
+    "sha256": "2224c800487f48ef89b174bec0c3de39f4c4e6e0f20c1926f9780de819c6ff07",
+    "bytes": 16063285,
+    "release_published_at": "2026-10-30T08:34:22Z",
+    "target_commitish": "3daa67eca9a9f9651b37d63babe6dfc8ec6961ac"
+  },
+  "CS16Client-Linux-x86_64.tar.gz": {
+    "url": "https://github.com/FWGS/cs16-client/releases/download/continuous/CS16Client-Linux-x86_64.tar.gz",
+    "sha256": "6d9b039304454596d46bb050fa67e7145403c8ba1b5333523c3d4aa71de8202e",
+    "bytes": 29437317,
+    "release_published_at": "2026-10-23T18:13:19Z",
+    "target_commitish": "main"
+  },
+  "CS16Client-macOS-arm64.zip": {
+    "url": "https://github.com/FWGS/cs16-client/releases/download/continuous/CS16Client-macOS-arm64.zip",
+    "sha256": "d3d0df36866df5337d00d8cdf457104859228f602c77ce2ab57ecbee4dc42efe",
+    "bytes": 17803603,
+    "release_published_at": "2026-10-23T18:13:19Z",
+    "target_commitish": "main"
+  },
+  "CS16Client-Windows-x64.zip": {
+    "url": "https://github.com/FWGS/cs16-client/releases/download/continuous/CS16Client-Windows-x64.zip",
+    "sha256": "e28e04672fbe533e08d3fe8c63848644db008f55d89d2000de65e0035c66347d",
+    "bytes": 44184077,
+    "release_published_at": "2026-10-23T18:13:19Z",
+    "target_commitish": "main"
+  }
+}

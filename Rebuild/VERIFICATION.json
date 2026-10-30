@@ -1,0 +1,284 @@
+{
+  "macOS": {
+    "maps": 67,
+    "navigation_files": 41,
+    "verified_content_files": 4898,
+    "menu_style": "default",
+    "native_architecture": "arm64",
+    "signature_verified": true,
+    "client_and_menu_dlopen": true,
+    "network_disabled_in_tests": true,
+    "map_startup_tests": {
+      "aim_Dust": "passed",
+      "aim_ak-colt": "passed",
+      "aim_map": "passed",
+      "aim_map_usp": "passed",
+      "aim_sk_ak_m4": "passed",
+      "aim_sk_aug_sig": "passed",
+      "aim_sk_awp": "passed",
+      "aim_sk_galil_famas": "passed",
+      "aim_sk_glock": "passed",
+      "aim_sk_usp_deagle": "passed",
+      "as_oilrig": "passed",
+      "awp_city": "passed",
+      "awp_map": "passed",
+      "breakfloor_b5": "passed",
+      "cs_747": "passed",
+      "cs_assault": "passed",
+      "cs_backalley": "passed",
+      "cs_deagle5": "passed",
+      "cs_estate": "passed",
+      "cs_havana": "passed",
+      "cs_italy": "passed",
+      "cs_militia": "passed",
+      "cs_office": "passed",
+      "cs_sauna": "passed",
+      "cs_siege": "passed",
+      "de_airstrip": "passed",
+      "de_aztec": "passed",
+      "de_cbble": "passed",
+      "de_chateau": "passed",
+      "de_cpl_fire": "passed",
+      "de_cpl_mill": "passed",
+      "de_cpl_strike": "passed",
+      "de_dust": "passed",
+      "de_dust2": "passed",
+      "de_inferno": "passed",
+      "de_nuke": "passed",
+      "de_piranesi": "passed",
+      "de_prodigy": "passed",
+      "de_rats": "passed",
+      "de_storm": "passed",
+      "de_survivor": "passed",
+      "de_torn": "passed",
+      "de_train": "passed",
+      "de_vertigo": "passed",
+      "de_westwood": "passed",
+      "fy_iceworld2k": "passed",
+      "fy_pool_day": "passed",
+      "fy_poolparty": "passed",
+      "fy_snow": "passed",
+      "kz_adv_underground": "passed",
+      "kz_canyon": "passed",
+      "kz_climbers_b01": "passed",
+      "kz_deanhawkins_b01": "passed",
+      "kz_ep_gigablock_b01": "passed",
+      "kz_ezboulder_b01": "passed",
+      "kz_hauntedhouse_v1": "passed",
+      "kz_jett_mountain": "passed",
+      "kz_man_bhopocean": "passed",
+      "kz_man_bhopsnow": "passed",
+      "kz_man_everest": "passed",
+      "kz_man_halloween2004": "passed",
+      "kz_man_redrock": "passed",
+      "kz_man_streetclimb": "passed",
+      "kz_man_ultrablock": "passed",
+      "kz_real_caverns": "passed",
+      "kz_wsp_islandclimb": "passed",
+      "kz_wsp_valleyclimb": "passed"
+    }
+  },
+  "Linux": {
+    "maps": 67,
+    "navigation_files": 41,
+    "verified_content_files": 4898,
+    "menu_style": "default",
+    "native_architecture": "x86_64"
+  },
+  "Windows": {
+    "maps": 67,
+    "navigation_files": 41,
+    "verified_content_files": 4898,
+    "menu_style": "default",
+    "native_architecture": "x86_64"
+  },
+  "limitations": [
+    "Graphical menu/gameplay not tested: no agent display access.",
+    "Windows/Linux runtime and mixed-OS LAN not tested on native machines.",
+    "Original GoldSrc Slash server compatibility not verified."
+  ],
+  "navigation_version_warning_maps": [
+    "aim_ak-colt",
+    "aim_map",
+    "aim_map_usp",
+    "as_oilrig",
+    "awp_city",
+    "awp_map",
+    "cs_747",
+    "cs_assault",
+    "cs_backalley",
+    "cs_deagle5",
+    "cs_estate",
+    "cs_havana",
+    "cs_italy",
+    "cs_militia",
+    "cs_office",
+    "cs_sauna",
+    "cs_siege",
+    "de_airstrip",
+    "de_aztec",
+    "de_cbble",
+    "de_chateau",
+    "de_dust",
+    "de_dust2",
+    "de_inferno",
+    "de_nuke",
+    "de_piranesi",
+    "de_prodigy",
+    "de_rats",
+    "de_storm",
+    "de_survivor",
+    "de_torn",
+    "de_train",
+    "de_vertigo",
+    "de_westwood",
+    "fy_iceworld2k",
+    "fy_pool_day",
+    "fy_snow"
+  ],
+  "app_icon": {
+    "source": "User-provided high-resolution PNG",
+    "source_sha256": "2a39d5da6c5c310da4d7befcaac3319c2c72ffd7d0730fc2622aab2f98f28594",
+    "mac_representations": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "windows_representations": [
+      16,
+      24,
+      32,
+      48,
+      64,
+      128,
+      256
+    ],
+    "linux_png_pixels": 512
+  },
+  "cleanup": {
+    "retired_workspace_apps": [
+      {
+        "source": "/Users/mhouten/Developer/csgo_1.6/CS 1.6.app",
+        "backup": "/Users/mhouten/Developer/csgo_1.6/build/backups/retired-mac-installations-20261030-182919/CS 1.6.app.retired"
+      },
+      {
+        "source": "/Users/mhouten/Developer/csgo_1.6/CS16/macOS/Counter-Strike.app",
+        "backup": "/Users/mhouten/Developer/csgo_1.6/build/backups/retired-mac-installations-20261030-182919/Counter-Strike.app.retired"
+      }
+    ],
+    "installed_apps_remaining": [],
+    "settings_cleanup": [
+      {
+        "path": "/Users/mhouten/Library/Application Support/Counter-Strike 1.6",
+        "status": "blocked by filesystem permissions",
+        "error": "[Errno 1] Operation not permitted: '/Users/mhouten/Library/Application Support/Counter-Strike 1.6' -> '/Users/mhouten/Developer/csgo_1.6/build/backups/retired-mac-installations-20261030-182919/Counter-Strike 1.6'"
+      },
+      {
+        "path": "/Users/mhouten/Library/Application Support/Counter-Strike Slash",
+        "status": "blocked by filesystem permissions",
+        "error": "[Errno 1] Operation not permitted: '/Users/mhouten/Library/Application Support/Counter-Strike Slash' -> '/Users/mhouten/Developer/csgo_1.6/build/backups/retired-mac-installations-20261030-182919/Counter-Strike Slash'"
+      }
+    ]
+  },
+  "archive_checks": {
+    "Linux": {
+      "archive_integrity": true,
+      "verified_shared_files": 4898,
+      "file_count": 4924,
+      "runtime_symlinks": 13,
+      "custom_icon": true,
+      "upstream_menu_pk3_unchanged": true,
+      "console_font_default_scale": 2
+    },
+    "Windows": {
+      "archive_integrity": true,
+      "verified_shared_files": 4898,
+      "file_count": 4918,
+      "runtime_symlinks": 0,
+      "custom_icon": true,
+      "upstream_menu_pk3_unchanged": true,
+      "console_font_default_scale": 2
+    },
+    "macOS": {
+      "archive_integrity": true,
+      "verified_shared_files": 4898,
+      "file_count": 10412,
+      "runtime_symlinks": 0,
+      "custom_icon": true,
+      "upstream_menu_pk3_unchanged": true,
+      "signature_verified_after_zip_extraction": true,
+      "console_font_default_scale": 2
+    }
+  },
+  "standalone_rebuild_content_reproduced": true,
+  "setup_tests_passed": 11,
+  "console_font_update": {
+    "changed_shared_files": [
+      "cstrike/config.cfg"
+    ],
+    "packages": {
+      "macOS": {
+        "maps": 67,
+        "navigation_files": 41,
+        "verified_content_files": 4898,
+        "menu_style": "default",
+        "native_architecture": "arm64"
+      },
+      "Linux": {
+        "maps": 67,
+        "navigation_files": 41,
+        "verified_content_files": 4898,
+        "menu_style": "default",
+        "native_architecture": "x86_64"
+      },
+      "Windows": {
+        "maps": 67,
+        "navigation_files": 41,
+        "verified_content_files": 4898,
+        "menu_style": "default",
+        "native_architecture": "x86_64"
+      }
+    },
+    "archive_checks": {
+      "Windows": {
+        "verified_shared_files": 4898,
+        "archive_integrity": true,
+        "console_font_default_scale": 2
+      },
+      "Linux": {
+        "verified_shared_files": 4898,
+        "archive_integrity": true,
+        "console_font_default_scale": 2
+      },
+      "macOS": {
+        "verified_shared_files": 4898,
+        "archive_integrity": true,
+        "console_font_default_scale": 2,
+        "signature_verified_after_zip_extraction": true
+      }
+    },
+    "new_default_applies_to": "Fresh configurations; existing players use con_fontscale 2 and host_writeconfig.",
+    "graphical_font_appearance_tested": false,
+    "engine_source": "https://github.com/FWGS/xash3d-fwgs/blob/3daa67eca9a9f9651b37d63babe6dfc8ec6961ac/engine/client/console.c",
+    "updated_utc": "2026-10-30T21:01:08.088487+00:00",
+    "standalone_rebuild_content_reproduced": true
+  },
+  "repository_preparation": {
+    "date": "2026-10-31",
+    "steam_source_without_slash_test_passed": true,
+    "legacy_shared_hashes_reproduced": 4898,
+    "public_map_catalog_entries": 42,
+    "independently_downloaded_maps_matching_snapshot": [
+      "aim_map",
+      "kz_adv_underground",
+      "kz_hauntedhouse_v1"
+    ],
+    "offline_mirror_fallback": "Rebuild/Maps/breakfloor_b5.bsp",
+    "packaged_game_archives_changed": false,
+    "github_publication": "pending authenticated transport"
+  }
+}

@@ -1,0 +1,17 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.syso
+/Counter-Strike-*.zip
+/Counter-Strike-*.tar.gz
+/Rebuild-Kit.zip
+/build/
+/downloads/
+/output*/
+/sources/
+/backups/
+/Rebuild/build/
+/Rebuild/downloads/
+/Rebuild/output*/
+/Rebuild/sources/
+*.partial

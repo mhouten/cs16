@@ -1,0 +1,330 @@
+{
+  "checked_utc": "2026-10-30T21:42:06.085030+00:00",
+  "stock_maps": [
+    "as_oilrig",
+    "cs_747",
+    "cs_assault",
+    "cs_backalley",
+    "cs_estate",
+    "cs_havana",
+    "cs_italy",
+    "cs_militia",
+    "cs_office",
+    "cs_siege",
+    "de_airstrip",
+    "de_aztec",
+    "de_cbble",
+    "de_chateau",
+    "de_dust",
+    "de_dust2",
+    "de_inferno",
+    "de_nuke",
+    "de_piranesi",
+    "de_prodigy",
+    "de_storm",
+    "de_survivor",
+    "de_torn",
+    "de_train",
+    "de_vertigo"
+  ],
+  "custom_maps": [
+    {
+      "name": "aim_Dust",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_dust.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_dust.zip",
+      "snapshot_sha256": "3e93dac178e275dbab68de6e8aa0e0c7e3558d84127e052866de22ee7497ea2d",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_ak-colt",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_ak-colt.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_ak-colt.zip",
+      "snapshot_sha256": "17b445d1f4ec64e306b8cd1d1b90e44bfe1b57ebc6815e17198ce0a3d9da3866",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_map",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_map.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_map.zip",
+      "snapshot_sha256": "bf0a879d11c2b73a0b58b7832ea8f91d7979ba0b90071c14d40a712a2e1a5b3c",
+      "download_hash_verified": true
+    },
+    {
+      "name": "aim_map_usp",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_map_usp.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_map_usp.zip",
+      "snapshot_sha256": "a42d88f2a9709130c2349af2966ce9f0e156511185d0f67c28ee18c7b10f1e7d",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_sk_ak_m4",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_ak_m4.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_ak_m4.zip",
+      "snapshot_sha256": "06ffcbd7ecd5dc2e06a06ca055b69a65d935ede05f035adbfd8582b7dbee08ad",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_sk_aug_sig",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_aug_sig.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_aug_sig.zip",
+      "snapshot_sha256": "2a52af46e47a41c3ef629b1ca0bb5b85d5584d9ec3573fcdfa219e1b0d895761",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_sk_awp",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_awp.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_awp.zip",
+      "snapshot_sha256": "3b6ba0484188a32975cc5b0abc417a2df5cdc2ac83ff33e38df5fef37ce129f9",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_sk_galil_famas",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_galil_famas.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_galil_famas.zip",
+      "snapshot_sha256": "a111cbfa4c8aaae6f6e859e8eb9bb39ed6ecaaaf301085a05fac8fbf322087ee",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_sk_glock",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_glock.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_glock.zip",
+      "snapshot_sha256": "4771f7b4151f3d0be7cf5626ee9fb7a8d269e53d9bcd6e7193e12a680364f396",
+      "download_hash_verified": false
+    },
+    {
+      "name": "aim_sk_usp_deagle",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_usp_deagle.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_usp_deagle.zip",
+      "snapshot_sha256": "d72bce4dcc708c77eb9140b6681c7b9bb26d17d5c160a551ee348a725249a6aa",
+      "download_hash_verified": false
+    },
+    {
+      "name": "awp_city",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/awp_city.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/awp_city.zip",
+      "snapshot_sha256": "6ef7306bdfd28e567e82522af9fc6fa3a7a2d20571adf2e7384daa84e2c14ab2",
+      "download_hash_verified": false
+    },
+    {
+      "name": "awp_map",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/awp_map.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/awp_map.zip",
+      "snapshot_sha256": "a85b6b02cee04e309e6dab6957dea88e2c8f38f2eeb877eb0e18a387e7df031d",
+      "download_hash_verified": false
+    },
+    {
+      "name": "breakfloor_b5",
+      "source_page": "https://files.cs-best.org.ua/?do=search&letter=b",
+      "download_url": "https://raw.githubusercontent.com/mhouten/cs16/main/Rebuild/Maps/breakfloor_b5.bsp",
+      "snapshot_sha256": "6afa463013e710e3724ba0a9e6319dc64bdc0c1c172d94fcf2d7fe1f14a52347",
+      "download_hash_verified": false,
+      "source_status": "Original mirror lists map but all download servers are offline. Exact existing snapshot map included as public repository input.",
+      "author": "Anssi Kivitie",
+      "local_fallback_hash_verified": true
+    },
+    {
+      "name": "cs_deagle5",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/cs_deagle5.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/cs_deagle5.zip",
+      "snapshot_sha256": "ea550a51666b58ac2d9e95762dcc4fb6cb29fa7808a1b5e71726a993c342f498",
+      "download_hash_verified": false
+    },
+    {
+      "name": "cs_sauna",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/cs_sauna.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/cs_sauna.zip",
+      "snapshot_sha256": "e638af71ddf5306e61ae71effba6c81b60cffc64cc1b8c827cc3d49e920c9698",
+      "download_hash_verified": false
+    },
+    {
+      "name": "de_cpl_fire",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_fire.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_fire.zip",
+      "snapshot_sha256": "b95a0a230dd23b35eab411aad8b6c5264893490d3375e646ba4a3153ea2068b2",
+      "download_hash_verified": false
+    },
+    {
+      "name": "de_cpl_mill",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_mill.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_mill.zip",
+      "snapshot_sha256": "2e4fa701b75cab18a54e2010a07372a241b9fefdd18ebd071d2b34873d9d6898",
+      "download_hash_verified": false
+    },
+    {
+      "name": "de_cpl_strike",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_strike.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_strike.zip",
+      "snapshot_sha256": "32dbc6966731724bcba8b9835d3215b377b4b4fed47bbe0ea1b70b315ab64da3",
+      "download_hash_verified": false
+    },
+    {
+      "name": "de_rats",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_rats.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_rats.zip",
+      "snapshot_sha256": "dec835f85983a866a9afb9dc656c7104ffcbaee683961cca82ffd2ac9c5bc3f8",
+      "download_hash_verified": false
+    },
+    {
+      "name": "de_westwood",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_westwood.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_westwood.zip",
+      "snapshot_sha256": "e4b187ccc0992d1bf0d32e75f8597a895aab9e70368d56d33603c48f7c4eeade",
+      "download_hash_verified": false
+    },
+    {
+      "name": "fy_iceworld2k",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_iceworld2k.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_iceworld2k.zip",
+      "snapshot_sha256": "abd5c4faeaab22e300d6fd42a8fe3c03655fdcd2f793dbf68b27c0e366adc2dc",
+      "download_hash_verified": false
+    },
+    {
+      "name": "fy_pool_day",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_pool_day.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_pool_day.zip",
+      "snapshot_sha256": "fb22ba78a20d762a7114bdd56d62ec01794695ac48c6777f1bbd676ab769d208",
+      "download_hash_verified": false
+    },
+    {
+      "name": "fy_poolparty",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_poolparty.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_poolparty.zip",
+      "snapshot_sha256": "44f696ade6c9f457be8c5feee737d248a01e14d86f94296dd96abaafe55c3cb3",
+      "download_hash_verified": false
+    },
+    {
+      "name": "fy_snow",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_snow.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/fy_snow.zip",
+      "snapshot_sha256": "f4f6d78ff1ddd669230dbb27df2fefb25d8f7d114925184ded0770300eb51303",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_adv_underground",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_adv_underground",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_adv_underground",
+      "snapshot_sha256": "8ce7e5bb0b5ad2e493f4fd531914f76ea7d7bf0c795206b3f1cb59d56ae777e7",
+      "download_hash_verified": true
+    },
+    {
+      "name": "kz_canyon",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_canyon",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_canyon",
+      "snapshot_sha256": "9292186158d97dc0867d864308adcf67ef4dba91a633135db8f68d76bd5624ef",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_climbers_b01",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_climbers_b01",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_climbers_b01",
+      "snapshot_sha256": "b1b079c0b69f47739a3b865b6809e1b6df8a4bc96a1e04a5481bd11af593938d",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_deanhawkins_b01",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_deanhawkins_b01",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_deanhawkins_b01",
+      "snapshot_sha256": "78def3ac79ae496f558c584e8324883f7f209ba1edd5e77278f64cac81407099",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_ep_gigablock_b01",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_ep_gigablock_b01",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_ep_gigablock_b01",
+      "snapshot_sha256": "0a60d5c0a79fde0270257195eed56fb4e485be61a4cbad3a5e3e51c00fb0dd0d",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_ezboulder_b01",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_ezboulder_b01",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_ezboulder_b01",
+      "snapshot_sha256": "6fc381e4ea19535cf47b67f1b43717ebed420e6e0ad4723d6ee10ab284103274",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_hauntedhouse_v1",
+      "source_page": "https://gamekill.cz/cstrike/maps/",
+      "download_url": "https://gamekill.cz/cstrike/maps/kz_hauntedhouse_v1.bsp",
+      "snapshot_sha256": "eec90adfe45b646d256146fbb25ed5b1eec1ec3235b9cf874d9b544ae5d9dae6",
+      "download_hash_verified": true
+    },
+    {
+      "name": "kz_jett_mountain",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_jett_mountain",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_jett_mountain",
+      "snapshot_sha256": "6dcf1e2298b82f989144aef1248024696940328256d960e18926e53b4b37cdd0",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_man_bhopocean",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_man_bhopocean",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_man_bhopocean",
+      "snapshot_sha256": "5000028dd5259934b34cddf9561c6e6074fb32d1ea92d7d4b4052d87125735ce",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_man_bhopsnow",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_man_bhopsnow",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_man_bhopsnow",
+      "snapshot_sha256": "b9e6f919972ecaca66cdb325a0b136e950c95e552de1790e7f60d5af05bad28c",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_man_everest",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_man_everest",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_man_everest",
+      "snapshot_sha256": "5e377452b4454cb6ba646c28d99aec543b785febd55a6088f40d4f44db96f94e",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_man_halloween2004",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_man_halloween2004",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_man_halloween2004",
+      "snapshot_sha256": "c68739e8df47d350531e1fb18ea5f7b4c59e3276784f7d9e118b8a453731d228",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_man_redrock",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_man_redrock",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_man_redrock",
+      "snapshot_sha256": "d02830f56621e60be0dd7ccdbe752398aa5327f32ff53c4d6e2f1218c1ded9dd",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_man_streetclimb",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_man_streetclimb",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_man_streetclimb",
+      "snapshot_sha256": "a2bca217ce5d035196ed5dcfc6c76842a8b8c94ebe0a764094e063332784edd7",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_man_ultrablock",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_man_ultrablock",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_man_ultrablock",
+      "snapshot_sha256": "2bd28482a9a728236d19ee1b264fd2487f3923cafc5f473a076a2322214335f6",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_real_caverns",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_real_caverns",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_real_caverns",
+      "snapshot_sha256": "b362366da9c33717f929192051a155ab444bf84568ea94b3e148c598e17bd3f5",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_wsp_islandclimb",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_wsp_islandclimb",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_wsp_islandclimb",
+      "snapshot_sha256": "5e1f4de31e156fa961e40c1e70858afd2b6a5fc7f612d0a65192fcfdfd777789",
+      "download_hash_verified": false
+    },
+    {
+      "name": "kz_wsp_valleyclimb",
+      "source_page": "https://kz-rush.ru/en/maps/cs16/kz_wsp_valleyclimb",
+      "download_url": "https://kz-rush.ru/download/map/cs16/kz_wsp_valleyclimb",
+      "snapshot_sha256": "15206f1868af703adfa19443ad45853694aa0646a2838d00082c1acd950875a3",
+      "download_hash_verified": false
+    }
+  ],
+  "notes": "Source pages and listed download links checked; only download_hash_verified=true entries have been downloaded and matched byte-for-byte to the snapshot. Include archive resources, not just BSPs."
+}

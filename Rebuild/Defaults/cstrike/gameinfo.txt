@@ -1,0 +1,12 @@
+title "Counter-Strike"
+basedir "valve"
+gamedir "cstrike"
+gamedll "dlls/mp.dll"
+gamedll_linux "dlls/cs.so"
+gamedll_osx "dlls/cs.dylib"
+dllpath "cl_dlls"
+gamemode "multiplayer_only"
+mp_entity "info_player_start"
+startmap "de_dust2"
+trainmap ""
+nomodels 1

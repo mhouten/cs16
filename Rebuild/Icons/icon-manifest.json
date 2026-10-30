@@ -1,0 +1,23 @@
+{
+  "source": "User-provided high-resolution PNG",
+  "source_sha256": "2a39d5da6c5c310da4d7befcaac3319c2c72ffd7d0730fc2622aab2f98f28594",
+  "mac_representations": [
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "windows_representations": [
+    16,
+    24,
+    32,
+    48,
+    64,
+    128,
+    256
+  ],
+  "linux_png_pixels": 512
+}
