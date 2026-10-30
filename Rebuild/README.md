@@ -102,6 +102,59 @@ configuration preset, use the builder above. Upstream setup:
 Continuous URLs change; [upstream-lock.json](Rebuild/upstream-lock.json) records
 our packaged runtime snapshot.
 
+<details>
+<summary>All 42 custom map download links</summary>
+
+| Map | Download |
+| --- | --- |
+| `aim_Dust` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_dust.zip) |
+| `aim_ak-colt` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_ak-colt.zip) |
+| `aim_map` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_map.zip) |
+| `aim_map_usp` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_map_usp.zip) |
+| `aim_sk_ak_m4` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_ak_m4.zip) |
+| `aim_sk_aug_sig` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_aug_sig.zip) |
+| `aim_sk_awp` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_awp.zip) |
+| `aim_sk_galil_famas` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_galil_famas.zip) |
+| `aim_sk_glock` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_glock.zip) |
+| `aim_sk_usp_deagle` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/aim_sk_usp_deagle.zip) |
+| `awp_city` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/awp_city.zip) |
+| `awp_map` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/awp_map.zip) |
+| `breakfloor_b5` | [Download](https://raw.githubusercontent.com/mhouten/cs16/main/Rebuild/Maps/breakfloor_b5.bsp) |
+| `cs_deagle5` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/cs_deagle5.zip) |
+| `cs_sauna` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/cs_sauna.zip) |
+| `de_cpl_fire` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_fire.zip) |
+| `de_cpl_mill` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_mill.zip) |
+| `de_cpl_strike` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/de_cpl_strike.zip) |
+| `de_rats` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/de_rats.zip) |
+| `de_westwood` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/de_westwood.zip) |
+| `fy_iceworld2k` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/fy_iceworld2k.zip) |
+| `fy_pool_day` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/fy_pool_day.zip) |
+| `fy_poolparty` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/fy_poolparty.zip) |
+| `fy_snow` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/fy_snow.zip) |
+| `kz_adv_underground` | [Download](https://kz-rush.ru/download/map/cs16/kz_adv_underground) |
+| `kz_canyon` | [Download](https://kz-rush.ru/download/map/cs16/kz_canyon) |
+| `kz_climbers_b01` | [Download](https://kz-rush.ru/download/map/cs16/kz_climbers_b01) |
+| `kz_deanhawkins_b01` | [Download](https://kz-rush.ru/download/map/cs16/kz_deanhawkins_b01) |
+| `kz_ep_gigablock_b01` | [Download](https://kz-rush.ru/download/map/cs16/kz_ep_gigablock_b01) |
+| `kz_ezboulder_b01` | [Download](https://kz-rush.ru/download/map/cs16/kz_ezboulder_b01) |
+| `kz_hauntedhouse_v1` | [Download](https://gamekill.cz/cstrike/maps/kz_hauntedhouse_v1.bsp) |
+| `kz_jett_mountain` | [Download](https://kz-rush.ru/download/map/cs16/kz_jett_mountain) |
+| `kz_man_bhopocean` | [Download](https://kz-rush.ru/download/map/cs16/kz_man_bhopocean) |
+| `kz_man_bhopsnow` | [Download](https://kz-rush.ru/download/map/cs16/kz_man_bhopsnow) |
+| `kz_man_everest` | [Download](https://kz-rush.ru/download/map/cs16/kz_man_everest) |
+| `kz_man_halloween2004` | [Download](https://kz-rush.ru/download/map/cs16/kz_man_halloween2004) |
+| `kz_man_redrock` | [Download](https://kz-rush.ru/download/map/cs16/kz_man_redrock) |
+| `kz_man_streetclimb` | [Download](https://kz-rush.ru/download/map/cs16/kz_man_streetclimb) |
+| `kz_man_ultrablock` | [Download](https://kz-rush.ru/download/map/cs16/kz_man_ultrablock) |
+| `kz_real_caverns` | [Download](https://kz-rush.ru/download/map/cs16/kz_real_caverns) |
+| `kz_wsp_islandclimb` | [Download](https://kz-rush.ru/download/map/cs16/kz_wsp_islandclimb) |
+| `kz_wsp_valleyclimb` | [Download](https://kz-rush.ru/download/map/cs16/kz_wsp_valleyclimb) |
+
+`breakfloor_b5` uses the small repository fallback because its old mirror is offline.
+Other map revisions may differ; [comparison details](MAPS.md).
+
+</details>
+
 ## Play
 
 Create a game, join a team, then open the console with `~`:
