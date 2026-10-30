@@ -38,8 +38,8 @@ values are in `Rebuild/upstream-lock.json`. Do not describe these as freshly
 checked latest releases after that date without verifying upstream again.
 
 Slash's source was a local `cs-slash.rar` supplied by the user. Its original
-download URL is unknown. The small rebuild kit does not contain the proprietary
-game data or engine archives. Keep a separate copy of the source RAR, or provide
+download URL is unknown. The small rebuild kit does not contain a full game installation or engine
+archives; it includes one fallback custom map (see the GitHub section below). Keep a separate copy of the source RAR, or provide
 an extracted source folder containing `cstrike/` and `valve/`. The playable
 packages contain the assembled game content. They work without the old parent
 workspace. Exact source rebuilding requires the external inputs documented in
@@ -144,10 +144,13 @@ matched to the snapshot. Other variants have not been hash-verified. The old
 a shared game asset, not a saved user setting. Public inputs now allow a fresh
 installation with all map names; exact old Steam/resource revisions can differ.
 
-GitHub publication remains pending until authenticated transport succeeds.
+Source was successfully pushed and verified on GitHub: initial source commit
+`b5e3ee587bf4e0c8feb20022639d606695a1fde0` on `main`. Release asset publication
+remains pending: `gh auth status` reports no login and the release publisher
+stopped before making remote changes. `RELEASING.md` has the exact next command.
 This session initially had no `gh` login or GitHub token, and SSH resolution
 failed. The user was asked to run `gh auth login --hostname github.com
---git-protocol ssh --web` in Terminal. Do not claim a pushed commit or a
-published release without checking the remote. The workspace protects its `.git`
+--git-protocol ssh --web` in Terminal. Do not claim the release has been published until its assets are checked
+on GitHub. The workspace protects its `.git`
 path; an isolated temporary checkout is used for publishing, without changing
 that protected path.

@@ -279,6 +279,8 @@
     ],
     "offline_mirror_fallback": "Rebuild/Maps/breakfloor_b5.bsp",
     "packaged_game_archives_changed": false,
-    "github_publication": "pending authenticated transport"
+    "github_publication": "Source pushed to main; GitHub Release assets pending gh authentication.",
+    "initial_source_commit": "b5e3ee587bf4e0c8feb20022639d606695a1fde0",
+    "standalone_public_source_test_passed_after_kit_extraction": true
   }
 }
