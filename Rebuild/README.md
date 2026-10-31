@@ -173,6 +173,8 @@ uses its rules. These presets do not change the client network protocol.
 upgrades existing installations with the modes and five extra maps.
 Existing Mac profiles should run this upgrade even after replacing the app,
 so old writable startup files and map lists pick up the new features.
+If a mode reports `Unknown command`, rerun the updated installer; for the current
+session, enter `exec optional_modes.cfg` before selecting a mode.
 [Manual steps, bookmarks, legacy-server authentication and plugin modes](MODS.md).
 Zombie/GunGame/Deathrun plugins need a separate compatible server stack; they
 are not bundled as native presets or universally compatible Mac plugins.

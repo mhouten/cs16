@@ -62,6 +62,25 @@ class UpgradeTests(unittest.TestCase):
             self.assertFalse((game / 'cstrike/autoexec.cfg').exists())
             self.assertFalse((game / 'cstrike/gfx/shell/new_menu.tga').exists())
 
+    def test_startup_dispatcher_does_not_depend_on_saved_autoexec_or_userconfig(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base, user = Path(tmp) / 'SignedGame', Path(tmp) / 'SavedGame'
+            (base / 'cstrike').mkdir(parents=True)
+            (base / 'cstrike/autoexec.cfg').write_text('echo packaged_startup\n')
+            (user / 'cstrike/userconfig.d').mkdir(parents=True)
+            custom = user / 'cstrike/userconfig.d/my-settings.cfg'
+            custom.write_text('echo personal_startup\n')
+            features.install(user, base)
+            hook = user / 'cstrike/userconfig.d/optional-features.cfg'
+            self.assertEqual(['exec optional_modes.cfg', 'exec servers.cfg'],
+                             [line for line in hook.read_text().splitlines()
+                              if line and not line.startswith('//')])
+            self.assertEqual('echo personal_startup\n', custom.read_text())
+            self.assertFalse((base / 'cstrike/userconfig.d').exists())
+            before = hook.read_bytes()
+            features.install(user, base)
+            self.assertEqual(before, hook.read_bytes())
+
     def test_map_import_rejects_path_traversal(self):
         with tempfile.TemporaryDirectory() as tmp:
             archive = Path(tmp) / 'bad.zip'

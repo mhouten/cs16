@@ -1,10 +1,10 @@
 {
-  "updated_utc": "2026-10-31T08:07:56.012877+00:00",
+  "updated_utc": "2026-10-31T09:22:30.517345+00:00",
   "maps": 72,
   "original_slash_maps": 67,
   "original_slash_maps_preserved": true,
   "navigation_files": 41,
-  "shared_content_files": 4954,
+  "shared_content_files": 4955,
   "optional_host_modes": [
     "classic",
     "dm",
@@ -22,7 +22,7 @@
   "macOS": {
     "maps": 72,
     "navigation_files": 41,
-    "verified_content_files": 4954,
+    "verified_content_files": 4955,
     "menu_style": "default",
     "native_architecture": "arm64",
     "signature_verified": true,
@@ -107,36 +107,36 @@
   "Linux": {
     "maps": 72,
     "navigation_files": 41,
-    "verified_content_files": 4954,
+    "verified_content_files": 4955,
     "menu_style": "default",
     "native_architecture": "x86_64"
   },
   "Windows": {
     "maps": 72,
     "navigation_files": 41,
-    "verified_content_files": 4954,
+    "verified_content_files": 4955,
     "menu_style": "default",
     "native_architecture": "x86_64"
   },
   "archive_checks": {
     "macOS": {
-      "shared_files_verified": 4954,
+      "shared_files_verified": 4955,
       "maps": 72,
       "archive_integrity": true,
       "runtime_symlinks": 0,
       "signature_verified_after_zip_extraction": true
     },
-    "Linux": {
-      "shared_files_verified": 4954,
-      "maps": 72,
-      "archive_integrity": true,
-      "runtime_symlinks": 13
-    },
     "Windows": {
-      "shared_files_verified": 4954,
+      "shared_files_verified": 4955,
       "maps": 72,
       "archive_integrity": true,
       "runtime_symlinks": 0
+    },
+    "Linux": {
+      "shared_files_verified": 4955,
+      "maps": 72,
+      "archive_integrity": true,
+      "runtime_symlinks": 13
     }
   },
   "host_mode_runtime": {
@@ -790,10 +790,13 @@
         "bot_allow_shield": "1"
       }
     },
+    "startup_dispatcher": "userconfigd",
+    "startup_hook_loaded": true,
+    "upgrade_profile": false,
     "network_disabled": true,
     "graphical_play_tested": false
   },
-  "upgrade_and_public_source_tests_passed": 5,
+  "upgrade_and_public_source_tests_passed": 6,
   "app_icon": {
     "source": "User-provided high-resolution PNG",
     "source_sha256": "2a39d5da6c5c310da4d7befcaac3319c2c72ffd7d0730fc2622aab2f98f28594",
@@ -882,7 +885,23 @@
     "maps_listed_after_upgrade": 72,
     "old_engine_loaded_extra_map_from_user_overlay": true,
     "bookmark_includes_goldsrc_flag": true,
-    "original_app_signature_unchanged_and_valid": true
+    "original_app_signature_unchanged_and_valid": true,
+    "startup_dispatcher_and_mode_aliases_passed": true
   },
-  "bot_navigation_warning_count": 37
+  "bot_navigation_warning_count": 37,
+  "map_startup_checks_from_utc": "2026-10-31T08:07:56.012877+00:00",
+  "startup_fix": {
+    "hook": "cstrike/userconfig.d/optional-features.cfg",
+    "reason": "autoexec.cfg alone did not load mode aliases in the installed client",
+    "dispatcher": "userconfigd, called by the pinned engine after saved client settings",
+    "new_app_native_dispatcher_and_18_mode_checks_passed": true,
+    "installed_app_isolated_upgrade_and_18_mode_checks_passed": true,
+    "installed_app_path": "/Applications/Counter-Strike-1.6-macos.app",
+    "real_user_profile_modified_by_agent": false,
+    "graphical_startup_tested": false,
+    "shared_content_delta": [
+      "cstrike/userconfig.d/optional-features.cfg"
+    ],
+    "previous_map_startup_results_retained_for_unchanged_maps_and_binaries": true
+  }
 }

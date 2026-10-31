@@ -134,7 +134,7 @@ folder containing `valve/` and `cstrike/` uses the public preset from
 Steam saved `.cfg` files are excluded rather than imported into fresh packages.
 Before the optional-mode update, public-source handling preserved all 4,898
 baseline hashes. The optional-mode update intentionally adds files and adapts
-startup files; the current shared inventory has 4,954 files.
+startup files; the current shared inventory has 4,955 files.
 
 `MAPS.md` and `Rebuild/map-sources.json` list the 42 extra maps. Public downloads
 for `aim_map`, `kz_adv_underground`, and `kz_hauntedhouse_v1` were downloaded and
@@ -195,6 +195,30 @@ its signature, listed 72 maps and loaded a new map on that original engine.
 All 4,954 shared hashes were checked across the final three archives; Mac strict
 signature verified after extraction; Linux links/modes preserved. Graphical play,
 Windows/Linux execution and real legacy/mod-server connections are still untested.
+
+### Mode startup correction — 31 October
+
+The user successfully installed the add-on, but shortcuts were not loaded:
+the original installer depended on autoexec.cfg. The pinned engine's Host_Init
+explicitly runs `userconfigd` after saved client configuration; the new shared
+`cstrike/userconfig.d/optional-features.cfg` loads aliases and bookmarks there.
+No mode or personal preference is applied by that startup file. The original
+autoexec hook remains for compatibility. Do not rely on autoexec alone again.
+
+Six unit tests pass. The native runtime test now exercises `userconfigd`, rather
+than directly loading optional_modes.cfg, before checking all nine modes and
+nine Classic resets. Both the new app and the actual installed /Applications
+app with an isolated upgraded profile passed. These are headless dispatcher
+checks, not graphical startup/gameplay tests. All 4,955 shared hashes are verified
+across the updated archives, and the edited Mac bundle is re-signed.
+
+The user's real profile cannot be written from this session. Updated extracted
+`Optional-Features/` and Optional-Features.zip are synchronized. The user must
+quit the game and rerun the same installer command, then reopen. No app reinstall
+or settings deletion is needed. For the current session use
+`exec optional_modes.cfg`, then `mode_practice` after hosting a map. The screenshot
+also includes an optional missing overview warning for aim_map; it does not
+explain missing mode shortcuts.
 
 Critical limits: full Zombie/GunGame/Deathrun AMXX plugin hosting is not bundled
 as a native preset. MODS.md gives a separate supported classic Windows/Linux

@@ -78,12 +78,19 @@ Your writable `cstrike` directory is:
 
 1. Copy `Rebuild/Features/cstrike/modes/` and `optional_modes.cfg` into it.
 2. Copy `servers.cfg.example` as `servers.cfg` if you do not already have one.
-3. Append to `autoexec.cfg`, keeping its existing commands:
+3. Copy `Rebuild/Features/cstrike/userconfig.d/optional-features.cfg` into
+   `cstrike/userconfig.d/` (create the folder if needed). The native engine runs
+   this folder after saved client settings; `autoexec.cfg` alone is not reliable.
+   The supplied file contains:
 
    ```text
    exec optional_modes.cfg
    exec servers.cfg
    ```
+
+   If an older upgrade reports `Unknown command: mode_practice`, rerun the
+   updated installer. For the current session, enter `exec optional_modes.cfg`,
+   then `mode_practice` after hosting a map. Use `mode_classic` to reset.
 
 4. Add `exec modes/_reset.cfg` at the beginning of both `server.cfg` and
    `listenserver.cfg`, before their existing commands. This resets host rules

@@ -15,6 +15,10 @@ engine or saved preferences. `MODS.md` includes manual instructions and server
 bookmarks. Full Zombie/GunGame/Deathrun plugin hosting needs a separate compatible
 server stack; universal legacy-server acceptance is not guaranteed.
 
+Mode shortcuts now load through the engine's `userconfig.d` startup folder.
+Older upgrades that report unknown mode commands should rerun the installer.
+Saved preferences and the installed Mac app are preserved.
+
 The repository README includes official engine/client links, public map sources,
 manual installation, and builds from Steam data without a private Slash archive.
 Public map revisions may differ from this release's snapshot.

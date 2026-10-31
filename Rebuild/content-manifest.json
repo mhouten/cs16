@@ -144,6 +144,7 @@
     "cstrike/servers.cfg.example",
     "cstrike/sprites/yelflare1.spr",
     "cstrike/userconfig.cfg",
+    "cstrike/userconfig.d/optional-features.cfg",
     "valve/gameinfo.txt"
   ],
   "excluded_files": [
@@ -10191,7 +10192,8 @@
     "cstrike/gfx/env/dustup.tga": "c5d1a0fb396d0ffc25ac4952d4edca54804b6391bb599a2b399dffefc9eb95df",
     "cstrike/maps/awp_india.res": "8b4aa403bd76e13f1e64cd9b9eba0a7c21398c59e5a19e6f2d7f057ca945ef0d",
     "cstrike/modes/climb.cfg": "244f5c590f714fa4e3f33d50f20a8197aad67b57fc00e1b0280371c4aeb8edac",
-    "cstrike/maps/surf_ski_2.res": "5fe1704eb8c88c325fb183194a7ba99802eb3aa2946795e7d71751f68c8beb0b"
+    "cstrike/maps/surf_ski_2.res": "5fe1704eb8c88c325fb183194a7ba99802eb3aa2946795e7d71751f68c8beb0b",
+    "cstrike/userconfig.d/optional-features.cfg": "8308532edd3a78aad163f1ad18444ef431b6e7ead36c63689d1dca5bdbbb1f31"
   },
   "created_utc": "2026-10-30T14:58:16.569954+00:00",
   "source_archive_sha256": null,
@@ -10360,5 +10362,6 @@
       ]
     }
   },
-  "original_slash_maps_preserved": true
+  "original_slash_maps_preserved": true,
+  "mode_startup_fix_utc": "2026-10-31T09:20:57.898407+00:00"
 }
