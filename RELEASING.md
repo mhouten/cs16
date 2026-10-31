@@ -2,7 +2,8 @@
 
 1. Commit/push the source to `git@github.com:mhouten/cs16.git` on `main`.
 2. Place the verified Windows, Linux and Mac archives in the project root,
-   beside `Rebuild-Kit.zip`, `SHA256SUMS.txt`, `VERIFICATION.json` and the cleanup command.
+   beside `Rebuild-Kit.zip`, `Optional-Features.zip`, `MODS.md`, `SHA256SUMS.txt`,
+   `VERIFICATION.json` and the cleanup command.
 3. Authenticate and upload:
 
    ```sh

@@ -5,9 +5,9 @@ Updated 31 October 2026. This folder is the user's chosen project base.
 ## Current product
 
 Three playable native Counter-Strike 1.6 packages with default upstream
-CS16Client/MainUI presentation, all 67 CS maps and 41 navigation files from the
-user's Slash archive, compatible buy/demo aliases and gameWARE host rules, native
-bots, and the user's high-resolution silver/soldier app icon.
+CS16Client/MainUI presentation, all original 67 Slash maps and 41 navigation files,
+five additional public maps (72 total), compatible aliases/host rules, native bots,
+nine optional host modes, and the supplied silver/soldier app icon.
 
 - macOS: `Counter-Strike-1.6-macos.zip`, ARM64 / Apple Silicon, macOS 13+.
 - Linux: `Counter-Strike-1.6-linux.tar.gz`, x86_64.
@@ -17,7 +17,7 @@ bots, and the user's high-resolution silver/soldier app icon.
   licenses, content manifest, runtime release lock, verification report.
 - `Clean-Old-Mac-Installs.command`: optional clean-install migration helper.
 
-The latest change increases the new-install console default to
+The console readability update increased the new-install console default to
 `con_fontscale "2"`, with automatic font selection (`con_fontnum "-1"`).
 Existing saved settings take priority. In the installed game's console use:
 
@@ -132,9 +132,9 @@ The builder now accepts `--source` (with the existing `--slash` alias). A Steam
 folder containing `valve/` and `cstrike/` uses the public preset from
 `Rebuild/Defaults/cstrike/`; original Slash inputs retain their existing behavior.
 Steam saved `.cfg` files are excluded rather than imported into fresh packages.
-`test_public_source.py` passes and the original Slash data preparation still
-reproduces all 4,898 baseline shared hashes exactly. Published game archives have
-not changed during this repository preparation.
+Before the optional-mode update, public-source handling preserved all 4,898
+baseline hashes. The optional-mode update intentionally adds files and adapts
+startup files; the current shared inventory has 4,954 files.
 
 `MAPS.md` and `Rebuild/map-sources.json` list the 42 extra maps. Public downloads
 for `aim_map`, `kz_adv_underground`, and `kz_hauntedhouse_v1` were downloaded and
@@ -154,3 +154,57 @@ failed. The user was asked to run `gh auth login --hostname github.com
 on GitHub. The workspace protects its `.git`
 path; an isolated temporary checkout is used for publishing, without changing
 that protected path.
+
+## Optional host modes and manual upgrade — 31 October 2026
+
+The user requested optional features on all ports, manual upgrades for people
+with older packages, and normal/legacy server joining alongside local modes.
+All three updated local archives have 72 maps and shared optional presets:
+`mode_classic`, `mode_dm`, `mode_ffa`, `mode_practice`, `mode_knives`,
+`mode_pistols`, `mode_surf`, `mode_climb`, `mode_bhop`. `mode_help` / `join_help`
+show commands. Client startup defines aliases and loads bookmarks only. Host
+startup resets to Classic; selecting a mode restarts a round. A new hosted map
+starts Classic again. Normal remote servers control their own rules.
+
+Five added maps: de_tuscan, cs_mansion, awp_india, surf_ski_2, 35hp_2. Their public
+archive URLs/digests are recorded in the map catalog and content manifest. All
+67 original BSPs and all 41 original nav files are preserved. No native code or
+upstream menu resources were replaced; the Mac app was re-signed for bundle data.
+
+`Rebuild/Features/` contains the presets and descriptive JSON. The shared
+`optional-features.py` module is used by the builder and `install-features.py`.
+The builder accepts repeated `--extra-map` ZIPs. Map import preserves existing
+assets and excludes executables, config scripts and menu art. Root
+`Optional-Features.zip` is a small existing-installation upgrade with presets,
+installer, map add-on and guide. Root `MODS.md` contains manual Python/copy steps,
+bookmarks, Steam broker setup and external mod-server installation links.
+
+Mac upgrades go into the writable Complete user profile, preserving the signed
+app and saved config.cfg. This is also needed after swapping the app if older
+writable startup files/map lists shadow new packaged defaults. Windows/Linux use
+Game/. Changed startup/map-list files are backed up. Bookmarks are local aliases
+in cstrike/servers.cfg; installer --bookmark NAME HOST:PORT --protocol goldsrc
+creates server_NAME with the gs suffix. No addresses or passwords are auto-filled.
+
+Validation: five upgrader/public-source unit tests; all nine native Mac mode
+profiles and all nine transitions back to Classic checked via actual cvar
+readback, including bot restrictions; zero unknown commands. All 72 maps passed
+headless Mac startup with the final startup files. A standalone add-on upgraded
+an existing 67-map Mac app through a user overlay, preserved custom config.cfg and
+its signature, listed 72 maps and loaded a new map on that original engine.
+All 4,954 shared hashes were checked across the final three archives; Mac strict
+signature verified after extraction; Linux links/modes preserved. Graphical play,
+Windows/Linux execution and real legacy/mod-server connections are still untested.
+
+Critical limits: full Zombie/GunGame/Deathrun AMXX plugin hosting is not bundled
+as a native preset. MODS.md gives a separate supported classic Windows/Linux
+mod-server route, plus FWGS native plugin development links. Mac ARM64 local
+classic-plugin hosting needs a compatible port; do not imply copying 32-bit
+modules works. Old GoldSrc joining still uses connect HOST:PORT gs. Where Steam
+authentication is needed, the official broker currently supports Linux; authentic
+account ownership and server acceptance remain required. The user was asked for
+a real Slash server address for connection testing; none has been supplied.
+
+GitHub Release upload still requires gh authentication. Source publication is
+authorized and should be kept synchronized through the isolated checkout. The
+local WORK_STATE.json tracks progress when memory tools are unavailable.

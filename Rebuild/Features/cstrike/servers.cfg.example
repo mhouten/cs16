@@ -1,0 +1,4 @@
+// Save a copy as cstrike/servers.cfg, then replace the example address.
+// alias server_office "connect 192.168.1.50:27015 gs"
+// alias server_home "connect 192.168.1.51:27015"
+// Run server_office or server_home in the console after editing.

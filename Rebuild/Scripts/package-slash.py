@@ -31,6 +31,7 @@ def module(name, filename):
 
 
 pack = module('slash_pack_helpers', 'package-clean.py')
+features = module('slash_optional_features', 'optional-features.py')
 DATA_EXTENSIONS = set('''.bsp .wad .mdl .spr .wav .mp3 .ogg .tga .bmp .pcx .lmp
     .pal .res .txt .lst .sc .seq .png .jpg .jpeg .dds .ico .nav .nod .scr .htm
     .html .ttf .otf .fgd'''.split())
@@ -87,7 +88,7 @@ def is_menu_override(rel):
     return parts[1:] == ('media', 'gamestartup.mp3')
 
 
-def make_data(source, target, menu_style='default'):
+def make_data(source, target, menu_style='default', extra_maps=()):
     if not (source / 'cstrike/maps/de_dust2.bsp').is_file() or not (source / 'valve').is_dir():
         raise RuntimeError('Source must contain cstrike/ and valve/ (including de_dust2.bsp).')
     copied, excluded = [], []
@@ -217,6 +218,10 @@ bot_quota 0
     # The source valve.rc predates Xash3D's startup/configuration sequence.
     # Use the upstream engine's startup script, shipped in valve/extras.pk3.
     # No legacy valve.rc is imported; ordinary Slash assets are unchanged.
+    optional_files = features.install(target)
+    map_imports = {}
+    for archive in extra_maps:
+        map_imports[Path(archive).name] = features.import_maps(archive, target)
     maps = sorted(p.stem for p in (game / 'maps').glob('*.bsp'))
     (game / 'mapcycle.txt').write_text('\n'.join(maps) + '\n')
     (game / 'maps.lst').write_text('\n'.join(f'{m} "{m}"' for m in maps) + '\n')
@@ -266,11 +271,14 @@ trainmap "t0a0"
               'excluded_files': excluded,
               'menu_style': menu_style,
               'source_profile': 'Slash archive' if slash_source else 'Steam data and public maps',
+              'optional_host_modes': ['classic', 'dm', 'ffa', 'practice', 'knives', 'pistols', 'surf', 'climb', 'bhop'],
+              'extra_map_imports': map_imports,
               'menu': ('Unmodified upstream CS16Client/MainUI artwork and colors; no Slash menu overrides.'
                        if menu_style == 'default' else 'Slash artwork and colors with native MainUI controls.'),
               'network': 'Native Xash LAN; old GoldSrc/Slash host compatibility is not guaranteed.'}
     if menu_style == 'default':
         report['adapted_files'].remove('cstrike/gfx/shell/colors.lst')
+    report['adapted_files'] = sorted(set(report['adapted_files'] + optional_files))
     # A digest inventory allows independent verification of every carried asset.
     report['source_content_sha256'] = {name: digest(source / name) for name in copied}
     report['output_content_sha256'] = {p.relative_to(target).as_posix(): digest(p)
@@ -502,6 +510,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', '--slash', dest='slash', type=Path, required=True,
                         help='Steam Half-Life folder with cstrike/ and valve/, or a Slash RAR/extracted folder')
+    parser.add_argument('--extra-map', type=Path, action='append', default=[], help='Additional map ZIP (repeatable); existing source assets are kept')
     parser.add_argument('--downloads', type=Path, default=ROOT / 'downloads')
     parser.add_argument('--output', type=Path, default=ROOT / 'build/slash-ready', help='Must be absent or empty; never overwrites a release')
     parser.add_argument('--work', type=Path, default=ROOT / 'build/slash-package', help='Fresh build directory (must not exist)')
@@ -540,7 +549,7 @@ def main():
             raise RuntimeError('Expected one cstrike/valve pair in Slash archive.')
         source = candidates[0]
     data = args.work / 'slash-data'
-    report = make_data(source, data, args.menu)
+    report = make_data(source, data, args.menu, [p.expanduser().resolve() for p in args.extra_map])
     report['created_utc'] = datetime.now(timezone.utc).isoformat()
     report['source_archive_sha256'] = digest(args.slash) if args.slash.is_file() else None
     report['release_archives'] = {n: digest(args.downloads / n) for s in ([] if args.data_only else args.platforms) for n in pack.PLATFORMS[s][:2]}

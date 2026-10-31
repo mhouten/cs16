@@ -9,7 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGES = ['Counter-Strike-1.6-windows.zip', 'Counter-Strike-1.6-linux.tar.gz',
             'Counter-Strike-1.6-macos.zip']
-EXTRAS = ['Rebuild-Kit.zip', 'SHA256SUMS.txt', 'VERIFICATION.json',
+EXTRAS = ['Rebuild-Kit.zip', 'Optional-Features.zip', 'MODS.md', 'SHA256SUMS.txt', 'VERIFICATION.json',
           'Clean-Old-Mac-Installs.command']
 
 

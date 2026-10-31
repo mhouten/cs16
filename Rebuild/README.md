@@ -1,6 +1,6 @@
 # Counter-Strike 1.6
 
-Native Windows, Linux and macOS packages with default menus, 67 maps, bots,
+Native Windows, Linux and macOS packages with default menus, 72 maps, bots,
 LAN hosting and readable console text.
 
 ## Downloads
@@ -22,7 +22,7 @@ Keep `Game` beside the Windows/Linux launcher. Copy the Mac app to `/Application
 
 1. Install your owned [Counter-Strike on Steam](https://store.steampowered.com/app/10/).
    Its `steamapps/common/Half-Life/` folder supplies `cstrike/` and `valve/`.
-2. Get the [42 custom maps](MAPS.md). Merge each archive's `maps/`, `models/`,
+2. Get the [47 custom maps](MAPS.md). Merge each archive's `maps/`, `models/`,
    `sound/`, `gfx/`, `sprites/` and `.wad` files into `cstrike/`, preserving paths.
    One old map's mirror is offline; its small BSP is hosted in this repository.
 3. Install [Python 3.12+](https://www.python.org/downloads/),
@@ -66,6 +66,8 @@ Public map revisions can differ from the Slash snapshot. Its original URL is
 unknown, so exact asset-for-asset reproduction still requires matching source
 content. [Map hashes and source links](MAPS.md) identify the known differences.
 If you have the original RAR, `--source /path/to/cs-slash.rar` also works.
+To include the five additions from that old source, add repeated
+`--extra-map /path/to/map.zip` arguments; [details and upgrade steps](MODS.md).
 
 ## Original downloads and manual installation
 
@@ -103,7 +105,7 @@ Continuous URLs change; [upstream-lock.json](Rebuild/upstream-lock.json) records
 our packaged runtime snapshot.
 
 <details>
-<summary>All 42 custom map download links</summary>
+<summary>All 47 custom map download links</summary>
 
 | Map | Download |
 | --- | --- |
@@ -149,11 +151,31 @@ our packaged runtime snapshot.
 | `kz_real_caverns` | [Download](https://kz-rush.ru/download/map/cs16/kz_real_caverns) |
 | `kz_wsp_islandclimb` | [Download](https://kz-rush.ru/download/map/cs16/kz_wsp_islandclimb) |
 | `kz_wsp_valleyclimb` | [Download](https://kz-rush.ru/download/map/cs16/kz_wsp_valleyclimb) |
+| `de_tuscan` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/de_tuscan.zip) |
+| `cs_mansion` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/cs_mansion.zip) |
+| `awp_india` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/awp_india.zip) |
+| `surf_ski_2` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/surf_ski_2.zip) |
+| `35hp_2` | [Download](https://en.ds-servers.com/maps/goldsrc/cstrike/35hp_2.zip) |
 
 `breakfloor_b5` uses the small repository fallback because its old mirror is offline.
 Other map revisions may differ; [comparison details](MAPS.md).
 
 </details>
+
+## Optional modes and normal servers
+
+Host a game, then use `mode_dm`, `mode_ffa`, `mode_practice`, `mode_knives`,
+`mode_pistols`, `mode_surf`, `mode_climb` or `mode_bhop`. `mode_classic` resets
+all mode settings. New hosted maps start in Classic; joining another server
+uses its rules. These presets do not change the client network protocol.
+
+[Optional-Features.zip](https://github.com/mhouten/cs16/releases/latest/download/Optional-Features.zip)
+upgrades existing installations with the modes and five extra maps.
+Existing Mac profiles should run this upgrade even after replacing the app,
+so old writable startup files and map lists pick up the new features.
+[Manual steps, bookmarks, legacy-server authentication and plugin modes](MODS.md).
+Zombie/GunGame/Deathrun plugins need a separate compatible server stack; they
+are not bundled as native presets or universally compatible Mac plugins.
 
 ## Play
 

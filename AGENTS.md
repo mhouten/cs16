@@ -17,6 +17,12 @@ the original parent workspace is not required to use the packages or rebuild kit
 - Maintain direct official component links and full manual rebuild instructions.
   The user has no original Slash download URL; never invent one.
 - Keep project context and agent instructions inside this directory.
+- Include optional host modes, currently Classic, DM, FFA, Practice, Knives,
+  Pistols, Surf, Climb and Bhop. Do not activate them from client startup.
+  New hosted maps reset to Classic. Preserve normal server joining and do not
+  claim universal GoldSrc authentication or native AMXX plugin compatibility.
+- Retain the original 67 maps and 41 navs; five extra public maps bring the total
+  to 72. Keep the manual add-on installer separate from engine/client libraries.
 - Repository: `git@github.com:mhouten/cs16.git`. Publish all three OS archives
   as GitHub Release assets; keep large packages out of Git history. The public
   README should be concise, with original download links and rebuild steps.
@@ -42,6 +48,13 @@ the original parent workspace is not required to use the packages or rebuild kit
 - `Rebuild/Scripts/publish-release.py` verifies checksums and publishes all three
   prepared packages with `gh`; authenticate first. Upload large archives only
   to Releases.
+- `Rebuild/Features/` contains the portable host presets.
+  `Rebuild/Scripts/install-features.py` upgrades existing installations, with
+  Mac writes directed to user settings so the signed app is preserved.
+- `MODS.md` documents manual upgrades, mode commands, server bookmarks,
+  authenticated GoldSrc joining and separate classic plugin-server installation.
+- `WORK_STATE.json` is the portable local task state when the memory tools are
+  unavailable. It is intentionally excluded from Git and release checksums.
 
 ## Making a release
 

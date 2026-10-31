@@ -1,3 +1,4 @@
+35hp_2
 aim_Dust
 aim_ak-colt
 aim_map
@@ -10,6 +11,7 @@ aim_sk_glock
 aim_sk_usp_deagle
 as_oilrig
 awp_city
+awp_india
 awp_map
 breakfloor_b5
 cs_747
@@ -19,6 +21,7 @@ cs_deagle5
 cs_estate
 cs_havana
 cs_italy
+cs_mansion
 cs_militia
 cs_office
 cs_sauna
@@ -41,6 +44,7 @@ de_storm
 de_survivor
 de_torn
 de_train
+de_tuscan
 de_vertigo
 de_westwood
 fy_iceworld2k
@@ -65,3 +69,4 @@ kz_man_ultrablock
 kz_real_caverns
 kz_wsp_islandclimb
 kz_wsp_valleyclimb
+surf_ski_2

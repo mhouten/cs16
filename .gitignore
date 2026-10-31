@@ -5,6 +5,8 @@ __pycache__/
 /Counter-Strike-*.zip
 /Counter-Strike-*.tar.gz
 /Rebuild-Kit.zip
+/Optional-Features.zip
+/WORK_STATE.json
 /build/
 /downloads/
 /output*/

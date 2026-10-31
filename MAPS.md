@@ -64,3 +64,17 @@ This catalog does not require a private Slash archive or our finished packages.
 
 `breakfloor_b5` by Anssi Kivitie is included in this repository because the old
 listing has no working download server. Its hash matches the packaged snapshot.
+
+## Five additional maps in the optional-modes update
+
+| Map | Source download | Packaged BSP SHA256 |
+| --- | --- | --- |
+| `de_tuscan` | [ZIP](https://en.ds-servers.com/maps/goldsrc/cstrike/de_tuscan.zip) | `fb33851413846309c97ea5e42e960fbe19dda24a85babe2e080dd0d00c78d2ff` |
+| `cs_mansion` | [ZIP](https://en.ds-servers.com/maps/goldsrc/cstrike/cs_mansion.zip) | `cd65250fdfd78950e8ea0146629613cb9d86566e3a663ce178e52457b6e1cd54` |
+| `awp_india` | [ZIP](https://en.ds-servers.com/maps/goldsrc/cstrike/awp_india.zip) | `c3d2311d633ab68aaf3708c49778e923f5a43e2dc2631abf5d602c56f2f2156f` |
+| `surf_ski_2` | [ZIP](https://en.ds-servers.com/maps/goldsrc/cstrike/surf_ski_2.zip) | `e45838152f7efb91d82f12bcd88793c0cb150dbc20523f0db4ec7fa3965f3524` |
+| `35hp_2` | [ZIP](https://en.ds-servers.com/maps/goldsrc/cstrike/35hp_2.zip) | `1003d8f3360f292a9e3fb2305e370c084f27921e37d6bd1e6cf46d35b0d32f67` |
+
+Original 67 maps and 41 navigation files are retained. The full packages now list
+72 maps. Existing installations can add the new maps with Optional-Features.zip;
+see [MODS.md](MODS.md).

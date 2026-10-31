@@ -324,6 +324,51 @@
       "download_url": "https://kz-rush.ru/download/map/cs16/kz_wsp_valleyclimb",
       "snapshot_sha256": "15206f1868af703adfa19443ad45853694aa0646a2838d00082c1acd950875a3",
       "download_hash_verified": false
+    },
+    {
+      "name": "de_tuscan",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_tuscan.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/de_tuscan.zip",
+      "archive_sha256": "b154cf7ca977b842f7e2445f7a3afae1e074b0ecde8aeaf871d0ef31e5656413",
+      "snapshot_sha256": "fb33851413846309c97ea5e42e960fbe19dda24a85babe2e080dd0d00c78d2ff",
+      "download_hash_verified": true,
+      "introduced": "optional-modes update"
+    },
+    {
+      "name": "cs_mansion",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/cs_mansion.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/cs_mansion.zip",
+      "archive_sha256": "898aeff9fde9f489a26ca9f5c3462cd4ddcf2f82933b45c5e4b0d2fff88503da",
+      "snapshot_sha256": "cd65250fdfd78950e8ea0146629613cb9d86566e3a663ce178e52457b6e1cd54",
+      "download_hash_verified": true,
+      "introduced": "optional-modes update"
+    },
+    {
+      "name": "awp_india",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/awp_india.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/awp_india.zip",
+      "archive_sha256": "fd9ac7973945da97d6d8ac359bb2892358792e148fcf9e2398cf5022f11ff87e",
+      "snapshot_sha256": "c3d2311d633ab68aaf3708c49778e923f5a43e2dc2631abf5d602c56f2f2156f",
+      "download_hash_verified": true,
+      "introduced": "optional-modes update"
+    },
+    {
+      "name": "surf_ski_2",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/surf_ski_2.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/surf_ski_2.zip",
+      "archive_sha256": "1fe39c9cc4d468898e8b1af1105854c72d57b866972261c6393c0cff368fa816",
+      "snapshot_sha256": "e45838152f7efb91d82f12bcd88793c0cb150dbc20523f0db4ec7fa3965f3524",
+      "download_hash_verified": true,
+      "introduced": "optional-modes update"
+    },
+    {
+      "name": "35hp_2",
+      "source_page": "https://en.ds-servers.com/maps/goldsrc/cstrike/35hp_2.html",
+      "download_url": "https://en.ds-servers.com/maps/goldsrc/cstrike/35hp_2.zip",
+      "archive_sha256": "2d950ffd326748377cb600761935a2fb31fcc0e8c58a00c469df2bcd9dce2ff7",
+      "snapshot_sha256": "1003d8f3360f292a9e3fb2305e370c084f27921e37d6bd1e6cf46d35b0d32f67",
+      "download_hash_verified": true,
+      "introduced": "optional-modes update"
     }
   ],
   "notes": "Source pages and listed download links checked; only download_hash_verified=true entries have been downloaded and matched byte-for-byte to the snapshot. Include archive resources, not just BSPs."

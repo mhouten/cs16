@@ -1,9 +1,8 @@
-Counter-Strike 1.6 for Windows x64, Linux x86_64 and Apple Silicon macOS.
+Counter-Strike 1.6: Windows x64, Linux x86_64, Apple Silicon Mac.
+72 maps; 9 optional host modes. Normal server rules apply when joining.
 
-Downloads and setup: https://github.com/mhouten/cs16
-Read README.md for original component links and independent rebuild steps.
-Read MAPS.md for public custom-map downloads.
-
-Extract your OS package. Windows: Counter-Strike.exe. Linux: ./Play. Mac: open the .app.
-Host a game, join a team, then use bot_add_ct / bot_add_t in the console.
-Console text: con_fontscale 2, then host_writeconfig.
+Read README.md for downloads and independent rebuild steps.
+Read MODS.md for manual upgrades, mode commands, saved servers and plugin setup.
+Console: mode_help; mode_classic restores original host rules.
+Legacy hosts: connect HOST:27015 gs (authentication/server compatibility varies).
+https://github.com/mhouten/cs16
