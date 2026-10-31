@@ -10,6 +10,24 @@ spec.loader.exec_module(features)
 
 
 class UpgradeTests(unittest.TestCase):
+    def test_documentation_upgrade_keeps_existing_manual_and_signed_base(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base, user = Path(tmp) / 'SignedGame', Path(tmp) / 'SavedGame'
+            manual = base / 'cstrike/manual/manual.htm'
+            manual.parent.mkdir(parents=True)
+            manual.write_bytes(b'<html>Existing original manual</html>')
+            (manual.parent / 'cssnet.css').write_bytes(b'body { color: black; }')
+            before = {p.relative_to(base): p.read_bytes() for p in base.rglob('*') if p.is_file()}
+            features.install_documentation(user, base)
+            self.assertEqual(before, {p.relative_to(base): p.read_bytes() for p in base.rglob('*') if p.is_file()})
+            self.assertEqual(manual.read_bytes(), (user / 'Documentation/CS-Manual.htm').read_bytes())
+            self.assertEqual((manual.parent / 'cssnet.css').read_bytes(),
+                             (user / 'Documentation/cssnet.css').read_bytes())
+            self.assertFalse((user / 'cstrike/manual/manual.htm').exists())
+            self.assertEqual((features.DOCUMENTATION / 'HL-Readme.txt').read_bytes(),
+                             (user / 'readme.txt').read_bytes())
+            self.assertEqual((user / 'readme.txt').read_bytes(), (user / 'valve/readme.txt').read_bytes())
+
     def test_upgrade_preserves_preferences_bookmarks_and_is_idempotent(self):
         with tempfile.TemporaryDirectory() as tmp:
             game = Path(tmp) / 'Game'

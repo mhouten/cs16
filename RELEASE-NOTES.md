@@ -19,6 +19,11 @@ Mode shortcuts now load through the engine's `userconfig.d` startup folder.
 Older upgrades that report unknown mode commands should rerun the installer.
 Saved preferences and the installed Mac app are preserved.
 
+Original Half-Life readme and Counter-Strike manual are included in a
+`Documentation` folder beside every package, and in the small Documentation.zip.
+Open its index.html directly; the native menu's unfinished Readme action remains
+unchanged. Existing installations can get the documents with the optional installer.
+
 The repository README includes official engine/client links, public map sources,
 manual installation, and builds from Steam data without a private Slash archive.
 Public map revisions may differ from this release's snapshot.

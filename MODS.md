@@ -66,6 +66,10 @@ launch the app with a custom `CS16_USERDIR`. Windows/Linux write into `Game/`.
 The installer backs up changed startup/map-list files, keeps saved player settings
 and existing map resources, and preserves your server bookmarks. It never
 replaces client/game DLLs or menu artwork. Start the game again, then use `mode_help`.
+It also restores the original HL Readme and CS Manual and prints the path to
+`Documentation/index.html`. Open that file in your browser; the upstream menu's
+Readme button is unfinished. A separate [documentation ZIP](https://github.com/mhouten/cs16/releases/latest/download/Documentation.zip)
+can be read without running an installer.
 
 ## Manual installation without Python
 

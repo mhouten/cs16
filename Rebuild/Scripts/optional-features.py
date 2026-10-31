@@ -6,6 +6,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'Features/cstrike'
+DOCUMENTATION = ROOT / 'Documentation'
 RESOURCE_FOLDERS = {'maps', 'models', 'sound', 'sprites', 'gfx', 'overviews'}
 RESOURCE_EXTENSIONS = {'.bsp', '.nav', '.res', '.txt', '.mdl', '.wav', '.mp3',
                        '.ogg', '.spr', '.tga', '.bmp', '.png', '.wad'}
@@ -68,6 +69,46 @@ def install(game, base=None, backup=None):
     if not (game / 'cstrike/servers.cfg').exists():
         _write(game, Path('cstrike/servers.cfg'), (SOURCE / 'servers.cfg.example').read_bytes(), backup)
         written.append('cstrike/servers.cfg')
+    written.extend(install_documentation(game, base, backup))
+    return written
+
+
+def install_documentation(game, base=None, backup=None):
+    """Restore original docs without replacing existing game manuals or code."""
+    game = Path(game)
+    base = Path(base) if base else game
+    written = []
+    def original(relative, fallback):
+        for folder in (game, base):
+            path = folder / relative
+            if path.is_file():
+                return path.read_bytes()
+        return (DOCUMENTATION / fallback).read_bytes()
+    hl = original('readme.txt', 'HL-Readme.txt')
+    cs = original('cstrike/manual/manual.htm', 'CS-Manual.htm')
+    files = {'readme.txt': hl, 'valve/readme.txt': hl,
+             'cstrike/manual/manual.htm': cs}
+    for relative, content in files.items():
+        if not any((folder / relative).is_file() for folder in (game, base)):
+            _write(game, Path(relative), content, backup)
+            written.append(relative)
+    for name, content in {'HL-Readme.txt': hl, 'CS-Manual.htm': cs,
+                          'index.html': (DOCUMENTATION / 'index.html').read_bytes()}.items():
+        relative = Path('Documentation') / name
+        _write(game, relative, content, backup)
+        written.append(relative.as_posix())
+    # Keep relative styles/images when a Steam/manual source supplies them.
+    resources = {}
+    for folder in (base, game):
+        manual = folder / 'cstrike/manual'
+        for path in manual.rglob('*'):
+            if (path.is_file() and not path.is_symlink()
+                    and path.suffix.lower() in {'.css', '.png', '.gif', '.jpg', '.jpeg', '.bmp'}):
+                resources[path.relative_to(manual)] = path
+    for name, path in sorted(resources.items()):
+        relative = Path('Documentation') / name
+        _write(game, relative, path.read_bytes(), backup)
+        written.append(relative.as_posix())
     return written
 
 

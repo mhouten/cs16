@@ -1,10 +1,10 @@
 {
-  "updated_utc": "2026-10-31T09:22:30.517345+00:00",
+  "updated_utc": "2026-10-31T09:53:14.752887+00:00",
   "maps": 72,
   "original_slash_maps": 67,
   "original_slash_maps_preserved": true,
   "navigation_files": 41,
-  "shared_content_files": 4955,
+  "shared_content_files": 4960,
   "optional_host_modes": [
     "classic",
     "dm",
@@ -22,7 +22,7 @@
   "macOS": {
     "maps": 72,
     "navigation_files": 41,
-    "verified_content_files": 4955,
+    "verified_content_files": 4960,
     "menu_style": "default",
     "native_architecture": "arm64",
     "signature_verified": true,
@@ -107,36 +107,39 @@
   "Linux": {
     "maps": 72,
     "navigation_files": 41,
-    "verified_content_files": 4955,
+    "verified_content_files": 4960,
     "menu_style": "default",
     "native_architecture": "x86_64"
   },
   "Windows": {
     "maps": 72,
     "navigation_files": 41,
-    "verified_content_files": 4955,
+    "verified_content_files": 4960,
     "menu_style": "default",
     "native_architecture": "x86_64"
   },
   "archive_checks": {
     "macOS": {
-      "shared_files_verified": 4955,
+      "shared_files_verified": 4960,
       "maps": 72,
       "archive_integrity": true,
       "runtime_symlinks": 0,
+      "external_documentation_verified": true,
       "signature_verified_after_zip_extraction": true
     },
     "Windows": {
-      "shared_files_verified": 4955,
+      "shared_files_verified": 4960,
       "maps": 72,
       "archive_integrity": true,
-      "runtime_symlinks": 0
+      "runtime_symlinks": 0,
+      "external_documentation_verified": true
     },
     "Linux": {
-      "shared_files_verified": 4955,
+      "shared_files_verified": 4960,
       "maps": 72,
       "archive_integrity": true,
-      "runtime_symlinks": 13
+      "runtime_symlinks": 13,
+      "external_documentation_verified": true
     }
   },
   "host_mode_runtime": {
@@ -796,7 +799,7 @@
     "network_disabled": true,
     "graphical_play_tested": false
   },
-  "upgrade_and_public_source_tests_passed": 6,
+  "upgrade_and_public_source_tests_passed": 7,
   "app_icon": {
     "source": "User-provided high-resolution PNG",
     "source_sha256": "2a39d5da6c5c310da4d7befcaac3319c2c72ffd7d0730fc2622aab2f98f28594",
@@ -877,7 +880,8 @@
     "Windows/Linux binaries and shared features checked statically; native execution/mixed-OS LAN not tested.",
     "Full Zombie/GunGame/Deathrun plugin hosting not bundled; manual compatible-server setup documented.",
     "Real legacy/mod server protocol/authentication/anti-cheat acceptance still needs a server test.",
-    "GitHub Release uploads remain pending gh authentication."
+    "GitHub Release uploads remain pending gh authentication.",
+    "In-game Readme callback is unimplemented upstream; documents open from Documentation/index.html. No graphical browser launch test."
   ],
   "existing_installation_upgrade": {
     "existing_67_map_app_upgrade_passed": true,
@@ -903,5 +907,25 @@
       "cstrike/userconfig.d/optional-features.cfg"
     ],
     "previous_map_startup_results_retained_for_unchanged_maps_and_binaries": true
+  },
+  "original_documentation": {
+    "local_index_links_valid": true,
+    "original_documents_hash_verified": true,
+    "old_app_upgrade_documentation_verified": true,
+    "native_menu_modified": false,
+    "in_game_readme_action_implemented": false,
+    "graphical_open_tested": false,
+    "canonical_shared_files_added": [
+      "Documentation/CS-Manual.htm",
+      "Documentation/HL-Readme.txt",
+      "Documentation/index.html",
+      "readme.txt",
+      "valve/readme.txt"
+    ],
+    "source_manifest": "Rebuild/Documentation/sources.json",
+    "original_content_preserved_byte_for_byte": true,
+    "all_three_packages_include_external_documentation_folder": true,
+    "standalone_documentation_zip_verified": true,
+    "real_user_profile_modified_by_agent": false
   }
 }

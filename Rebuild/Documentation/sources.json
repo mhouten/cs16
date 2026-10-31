@@ -1,0 +1,20 @@
+{
+  "description": "Unchanged historical game documentation restored from the supplied original game content; not a rewritten native-engine guide.",
+  "files": {
+    "HL-Readme.txt": {
+      "original_path": "cs-slash/readme.txt",
+      "sha256": "73a46b1a11ca358a56281ba8c4d38aa50ca3756392c5783b2bd1d81830838533",
+      "public_fallback": "https://raw.githubusercontent.com/mhouten/cs16/main/Rebuild/Documentation/HL-Readme.txt"
+    },
+    "CS-Manual.htm": {
+      "original_path": "cs-slash/cstrike/manual/manual.htm",
+      "sha256": "0b72ba493a432e307df3a21d59ac255d301f56cc602cbc19b8e05885339bdd77",
+      "public_fallback": "https://raw.githubusercontent.com/mhouten/cs16/main/Rebuild/Documentation/CS-Manual.htm"
+    }
+  },
+  "manual_rebuild": "Use original game readme.txt and cstrike/manual/manual.htm when present; these public copies provide a fallback without a private archive.",
+  "official_game_source": "https://store.steampowered.com/app/10/",
+  "native_menu_source": "https://github.com/Velaron/mainui_cpp/blob/4922113b7477d9073e9f483f46b0e10b3be888b7/menus/Main.cpp",
+  "menu_limit": "Readme onReleased callback is unimplemented upstream; unchanged native binaries.",
+  "historical_manual_optional_css": "CS HTML references cssnet.css, absent from supplied source; original HTML and its inline formatting remain unchanged."
+}

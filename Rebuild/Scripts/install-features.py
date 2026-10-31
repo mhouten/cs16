@@ -51,6 +51,7 @@ def main():
         features._write(game, relative, text.encode(), backup)
         print('Bookmark command: ' + alias)
     print('Updated: ' + str(game))
+    print('Open original HL Readme / CS Manual: ' + str(game / 'Documentation/index.html'))
     print(f'{len(maps)} maps listed. Start/restart the game; type mode_help for host modes or join_help for connections.')
     if backup.exists():
         print('Original changed files backed up in: ' + str(backup))

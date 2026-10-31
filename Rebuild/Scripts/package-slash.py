@@ -34,7 +34,7 @@ pack = module('slash_pack_helpers', 'package-clean.py')
 features = module('slash_optional_features', 'optional-features.py')
 DATA_EXTENSIONS = set('''.bsp .wad .mdl .spr .wav .mp3 .ogg .tga .bmp .pcx .lmp
     .pal .res .txt .lst .sc .seq .png .jpg .jpeg .dds .ico .nav .nod .scr .htm
-    .html .ttf .otf .fgd'''.split())
+    .html .css .gif .ttf .otf .fgd'''.split())
 SKIP_FILES = {'cached.wad', 'tempdecal.wad', 'steam_appid.txt', 'snapshot0000.bmp'}
 ADAPTED_CONFIGS = {'config.cfg', 'autoexec.cfg', 'userconfig.cfg', 'gwlistenserver.cfg',
                    'server.cfg', 'listenserver.cfg', 'okk1.cfg'}
@@ -415,6 +415,8 @@ def assemble(system, data, cache, dest, icons, work, freetype, menu_style='defau
         else:
             game = pack.windows_launcher(package, icons)
         shutil.copytree(data, game)
+        if system != 'macOS':
+            shutil.copytree(game / 'Documentation', package / 'Documentation')
         for source in native.iterdir():
             if source.name == executable or source.suffix.lower() in {'.dll', '.dylib', '.so'} or '.so.' in source.name:
                 if source.name in {'libmenu_tui.dylib', 'libmenu_tui.so', 'menu_tui.dll'}:
@@ -489,7 +491,9 @@ def publish(system, source, output, menu_style='default'):
         with tempfile.TemporaryDirectory(prefix='mac-archive-', dir=output) as temporary:
             app = Path(temporary) / (stem + '.app')
             shutil.copytree(source / 'Counter-Strike.app', app, symlinks=True)
-            pack.run('ditto', '-c', '-k', '--keepParent', app, target)
+            shutil.copytree(app / 'Contents/Resources/Game/Documentation',
+                            Path(temporary) / 'Documentation')
+            pack.run('ditto', '-c', '-k', temporary, target)
     elif system == 'Linux':
         target = output / (stem + '.tar.gz')
         with tarfile.open(target, 'w:gz', compresslevel=6) as archive:

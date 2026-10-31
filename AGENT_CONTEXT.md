@@ -134,7 +134,8 @@ folder containing `valve/` and `cstrike/` uses the public preset from
 Steam saved `.cfg` files are excluded rather than imported into fresh packages.
 Before the optional-mode update, public-source handling preserved all 4,898
 baseline hashes. The optional-mode update intentionally adds files and adapts
-startup files; the current shared inventory has 4,955 files.
+startup files; the current shared inventory has 4,960 files after restoring
+the original documentation.
 
 `MAPS.md` and `Rebuild/map-sources.json` list the 42 extra maps. Public downloads
 for `aim_map`, `kz_adv_underground`, and `kz_hauntedhouse_v1` were downloaded and
@@ -232,3 +233,33 @@ a real Slash server address for connection testing; none has been supplied.
 GitHub Release upload still requires gh authentication. Source publication is
 authorized and should be kept synchronized through the isolated checkout. The
 local WORK_STATE.json tracks progress when memory tools are unavailable.
+
+## Original documentation restoration — 31 October
+
+User requested the default documents behind HL Readme and CS Manual. The original
+root Half-Life readme (version 1.1.1.1, dated 12/2/02) was found in the supplied
+source archive; CS manual/manual.htm was already in all packages. Their contents
+are retained byte-for-byte under Rebuild/Documentation, with source hashes and
+public fallback URLs in sources.json. These are historical documents, not current
+native runtime instructions. Builder now also retains CSS in source manuals.
+
+Important: MainUI's pinned readme button has no onReleased callback: see
+Velaron/mainui_cpp commit 4922113b7477d9073e9f483f46b0e10b3be888b7,
+menus/Main.cpp (the TODO before readme.SetNameAndStatus). Adding data does not
+fix that button. Native menu/runtime binaries and artwork remain unmodified;
+do not report the in-game documentation buttons as fixed or graphically tested.
+
+Each package now includes a browser-readable Documentation folder beside its
+launcher/app, with both original documents and an index. The same documents are
+inside Game/Documentation, the original HL readme is at Game/readme.txt and
+Game/valve/readme.txt, and the existing CS manual is retained. Root Documentation/
+can be opened immediately; Documentation.zip is the small standalone download.
+The optional installer adds these to a writable Mac profile without editing its
+signed app. It prints the index path. This session cannot modify the real profile
+or /Applications; user-run installation remains necessary there.
+
+Validation: seven unit tests, all shared hashes across three package archives,
+document links/content hashes, Linux runtime links/modes and Mac signature after
+archive extraction. Current native mode/dispatcher checks passed again; the 72
+earlier headless map checks cover unchanged maps/binaries. Graphical browser/menu
+clicks, Windows/Linux execution and actual old-server connections remain untested.

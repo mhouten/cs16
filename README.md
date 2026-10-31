@@ -193,3 +193,13 @@ Slash host; [server acceptance varies](https://github.com/FWGS/xash3d-fwgs/blob/
 Console size: `con_fontscale 2`, then `host_writeconfig` to save it.
 Some supplied bot navigation needs `bot_nav_analyze`.
 [Verification and limits](VERIFICATION.json).
+
+Original **HL Readme** and **CS Manual** are included in `Documentation/` beside
+the game; open `index.html`. [Read them here](Documentation/index.html) or get the
+[small documentation ZIP](https://github.com/mhouten/cs16/releases/latest/download/Documentation.zip).
+The upstream menu's Readme action is unfinished, so use these files directly.
+The optional installer also adds them to existing installations.
+For a manual build, keep `readme.txt` and `cstrike/manual/` from your original
+game data. The rebuild kit includes unchanged historical copies as fallbacks:
+[HL Readme](Rebuild/Documentation/HL-Readme.txt) and
+[CS Manual](Rebuild/Documentation/CS-Manual.htm).

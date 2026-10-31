@@ -76,6 +76,9 @@
   ],
   "navigation_files": 41,
   "adapted_files": [
+    "Documentation/CS-Manual.htm",
+    "Documentation/HL-Readme.txt",
+    "Documentation/index.html",
     "cstrike/autoexec.cfg",
     "cstrike/awp_india.wad",
     "cstrike/config.cfg",
@@ -145,7 +148,9 @@
     "cstrike/sprites/yelflare1.spr",
     "cstrike/userconfig.cfg",
     "cstrike/userconfig.d/optional-features.cfg",
-    "valve/gameinfo.txt"
+    "readme.txt",
+    "valve/gameinfo.txt",
+    "valve/readme.txt"
   ],
   "excluded_files": [
     "valve/cached.wad",
@@ -10193,7 +10198,12 @@
     "cstrike/maps/awp_india.res": "8b4aa403bd76e13f1e64cd9b9eba0a7c21398c59e5a19e6f2d7f057ca945ef0d",
     "cstrike/modes/climb.cfg": "244f5c590f714fa4e3f33d50f20a8197aad67b57fc00e1b0280371c4aeb8edac",
     "cstrike/maps/surf_ski_2.res": "5fe1704eb8c88c325fb183194a7ba99802eb3aa2946795e7d71751f68c8beb0b",
-    "cstrike/userconfig.d/optional-features.cfg": "8308532edd3a78aad163f1ad18444ef431b6e7ead36c63689d1dca5bdbbb1f31"
+    "cstrike/userconfig.d/optional-features.cfg": "8308532edd3a78aad163f1ad18444ef431b6e7ead36c63689d1dca5bdbbb1f31",
+    "readme.txt": "73a46b1a11ca358a56281ba8c4d38aa50ca3756392c5783b2bd1d81830838533",
+    "valve/readme.txt": "73a46b1a11ca358a56281ba8c4d38aa50ca3756392c5783b2bd1d81830838533",
+    "Documentation/HL-Readme.txt": "73a46b1a11ca358a56281ba8c4d38aa50ca3756392c5783b2bd1d81830838533",
+    "Documentation/CS-Manual.htm": "0b72ba493a432e307df3a21d59ac255d301f56cc602cbc19b8e05885339bdd77",
+    "Documentation/index.html": "2615bbdb42e7d0423cebb80041025568fa7acb5ee052b01947bad08a9ac13122"
   },
   "created_utc": "2026-10-30T14:58:16.569954+00:00",
   "source_archive_sha256": null,
@@ -10363,5 +10373,13 @@
     }
   },
   "original_slash_maps_preserved": true,
-  "mode_startup_fix_utc": "2026-10-31T09:20:57.898407+00:00"
+  "mode_startup_fix_utc": "2026-10-31T09:20:57.898407+00:00",
+  "documentation_update_utc": "2026-10-31T09:49:49.206305+00:00",
+  "documentation_files_added": [
+    "Documentation/CS-Manual.htm",
+    "Documentation/HL-Readme.txt",
+    "Documentation/index.html",
+    "readme.txt",
+    "valve/readme.txt"
+  ]
 }
