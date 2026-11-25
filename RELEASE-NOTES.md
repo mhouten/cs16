@@ -4,6 +4,10 @@ Native Counter-Strike 1.6 packages for all three desktop systems:
 - **Linux x86_64:** extract the Linux tarball; run `./Play`.
 - **macOS 13+, Apple Silicon:** extract the Mac ZIP; open the `.app`.
 
+The November 25 rebuild uses Xash3D FWGS from November 24 and CS16Client from
+November 23. See `Rebuild/upstream-lock.json` in the rebuild kit for the exact
+runtime archives and SHA-256 digests.
+
 Default upstream menus, all 67 original Slash maps plus five additional maps
 (72 total), all 41 supplied navigation files, native bots, compatible scripts,
 LAN host rules and 2× console text. Nine optional host presets include Classic,

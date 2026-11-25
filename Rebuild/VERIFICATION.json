@@ -1,10 +1,12 @@
 {
-  "updated_utc": "2026-10-31T09:53:14.752887+00:00",
+  "updated_utc": "2026-11-25T08:12:43.932173+00:00",
+  "release_tag": "v2026.11.25",
   "maps": 72,
   "original_slash_maps": 67,
   "original_slash_maps_preserved": true,
   "navigation_files": 41,
   "shared_content_files": 4960,
+  "shared_content_matches_october_build": true,
   "optional_host_modes": [
     "classic",
     "dm",
@@ -17,17 +19,12 @@
     "bhop"
   ],
   "classic_is_default": true,
-  "client_protocol_changed": false,
-  "plugin_stacks_bundled": false,
   "macOS": {
     "maps": 72,
     "navigation_files": 41,
     "verified_content_files": 4960,
     "menu_style": "default",
     "native_architecture": "arm64",
-    "signature_verified": true,
-    "client_and_menu_dlopen": true,
-    "network_disabled_in_tests": true,
     "map_startup_tests": {
       "35hp_2": "passed",
       "aim_Dust": "passed",
@@ -102,7 +99,9 @@
       "kz_wsp_valleyclimb": "passed",
       "surf_ski_2": "passed"
     },
-    "host_mode_and_reset_checks": 18
+    "client_and_menu_dlopen": true,
+    "signature_verified": true,
+    "network_disabled_in_tests": true
   },
   "Linux": {
     "maps": 72,
@@ -118,27 +117,31 @@
     "menu_style": "default",
     "native_architecture": "x86_64"
   },
+  "limitations": [
+    "Graphical menu/gameplay not tested: no agent display access.",
+    "Windows/Linux runtime and mixed-OS LAN not tested on native machines.",
+    "Original GoldSrc Slash server compatibility not verified."
+  ],
   "archive_checks": {
     "macOS": {
       "shared_files_verified": 4960,
       "maps": 72,
       "archive_integrity": true,
-      "runtime_symlinks": 0,
       "external_documentation_verified": true,
       "signature_verified_after_zip_extraction": true
-    },
-    "Windows": {
-      "shared_files_verified": 4960,
-      "maps": 72,
-      "archive_integrity": true,
-      "runtime_symlinks": 0,
-      "external_documentation_verified": true
     },
     "Linux": {
       "shared_files_verified": 4960,
       "maps": 72,
       "archive_integrity": true,
+      "external_documentation_verified": true,
       "runtime_symlinks": 13,
+      "executable_bits_preserved": true
+    },
+    "Windows": {
+      "shared_files_verified": 4960,
+      "maps": 72,
+      "archive_integrity": true,
       "external_documentation_verified": true
     }
   },
@@ -801,131 +804,50 @@
   },
   "upgrade_and_public_source_tests_passed": 7,
   "app_icon": {
-    "source": "User-provided high-resolution PNG",
     "source_sha256": "2a39d5da6c5c310da4d7befcaac3319c2c72ffd7d0730fc2622aab2f98f28594",
-    "mac_representations": [
-      16,
-      32,
-      64,
-      128,
-      256,
-      512,
-      1024
-    ],
-    "windows_representations": [
-      16,
-      24,
-      32,
-      48,
-      64,
-      128,
-      256
-    ],
-    "linux_png_pixels": 512
-  },
-  "bot_navigation_warning_maps": [
-    "de_prodigy",
-    "aim_map_usp",
-    "de_cbble",
-    "cs_office",
-    "de_train",
-    "de_survivor",
-    "de_aztec",
-    "cs_italy",
-    "de_rats",
-    "de_piranesi",
-    "cs_havana",
-    "de_airstrip",
-    "cs_estate",
-    "as_oilrig",
-    "de_westwood",
-    "de_chateau",
-    "de_torn",
-    "fy_snow",
-    "de_dust",
-    "cs_siege",
-    "cs_assault",
-    "awp_map",
-    "fy_pool_day",
-    "aim_map",
-    "cs_747",
-    "aim_ak-colt",
-    "cs_deagle5",
-    "cs_backalley",
-    "de_storm",
-    "awp_city",
-    "de_nuke",
-    "cs_militia",
-    "de_dust2",
-    "de_inferno",
-    "de_vertigo",
-    "cs_sauna",
-    "fy_iceworld2k"
-  ],
-  "preserved_baseline": {
-    "runtime_lock": "Rebuild/upstream-lock.json",
-    "original_shared_files": 4898,
-    "original_map_and_navigation_hashes_preserved": true,
-    "engine_client_game_code_replaced": false,
-    "upstream_menu_pk3_changed": false
-  },
-  "legacy_server_status": {
-    "protocol": "connect HOST:PORT gs",
-    "steam_authentication": "Official Linux steam-broker plus licensed account where required",
-    "all_server_acceptance_guaranteed": false,
-    "live_legacy_server_connection_tested": false
-  },
-  "limitations": [
-    "No graphical gameplay testing; native mode tests check real server cvar state and map startup.",
-    "Windows/Linux binaries and shared features checked statically; native execution/mixed-OS LAN not tested.",
-    "Full Zombie/GunGame/Deathrun plugin hosting not bundled; manual compatible-server setup documented.",
-    "Real legacy/mod server protocol/authentication/anti-cheat acceptance still needs a server test.",
-    "GitHub Release uploads remain pending gh authentication.",
-    "In-game Readme callback is unimplemented upstream; documents open from Documentation/index.html. No graphical browser launch test."
-  ],
-  "existing_installation_upgrade": {
-    "existing_67_map_app_upgrade_passed": true,
-    "personal_config_preserved_by_installer": true,
-    "maps_listed_after_upgrade": 72,
-    "old_engine_loaded_extra_map_from_user_overlay": true,
-    "bookmark_includes_goldsrc_flag": true,
-    "original_app_signature_unchanged_and_valid": true,
-    "startup_dispatcher_and_mode_aliases_passed": true
+    "mac_icns_matches": true,
+    "windows_7_icon_payloads_embedded": true,
+    "linux_png_matches": true,
+    "mac_app_signature_verified": true
   },
   "bot_navigation_warning_count": 37,
-  "map_startup_checks_from_utc": "2026-10-31T08:07:56.012877+00:00",
-  "startup_fix": {
-    "hook": "cstrike/userconfig.d/optional-features.cfg",
-    "reason": "autoexec.cfg alone did not load mode aliases in the installed client",
-    "dispatcher": "userconfigd, called by the pinned engine after saved client settings",
-    "new_app_native_dispatcher_and_18_mode_checks_passed": true,
-    "installed_app_isolated_upgrade_and_18_mode_checks_passed": true,
-    "installed_app_path": "/Applications/Counter-Strike-1.6-macos.app",
-    "real_user_profile_modified_by_agent": false,
-    "graphical_startup_tested": false,
-    "shared_content_delta": [
-      "cstrike/userconfig.d/optional-features.cfg"
-    ],
-    "previous_map_startup_results_retained_for_unchanged_maps_and_binaries": true
-  },
-  "original_documentation": {
-    "local_index_links_valid": true,
-    "original_documents_hash_verified": true,
-    "old_app_upgrade_documentation_verified": true,
-    "native_menu_modified": false,
-    "in_game_readme_action_implemented": false,
-    "graphical_open_tested": false,
-    "canonical_shared_files_added": [
-      "Documentation/CS-Manual.htm",
-      "Documentation/HL-Readme.txt",
-      "Documentation/index.html",
-      "readme.txt",
-      "valve/readme.txt"
-    ],
-    "source_manifest": "Rebuild/Documentation/sources.json",
-    "original_content_preserved_byte_for_byte": true,
-    "all_three_packages_include_external_documentation_folder": true,
-    "standalone_documentation_zip_verified": true,
-    "real_user_profile_modified_by_agent": false
-  }
+  "bot_navigation_warning_maps": [
+    "aim_ak-colt",
+    "aim_map",
+    "aim_map_usp",
+    "as_oilrig",
+    "awp_city",
+    "awp_map",
+    "cs_747",
+    "cs_assault",
+    "cs_backalley",
+    "cs_deagle5",
+    "cs_estate",
+    "cs_havana",
+    "cs_italy",
+    "cs_militia",
+    "cs_office",
+    "cs_sauna",
+    "cs_siege",
+    "de_airstrip",
+    "de_aztec",
+    "de_cbble",
+    "de_chateau",
+    "de_dust",
+    "de_dust2",
+    "de_inferno",
+    "de_nuke",
+    "de_piranesi",
+    "de_prodigy",
+    "de_rats",
+    "de_storm",
+    "de_survivor",
+    "de_torn",
+    "de_train",
+    "de_vertigo",
+    "de_westwood",
+    "fy_iceworld2k",
+    "fy_pool_day",
+    "fy_snow"
+  ]
 }

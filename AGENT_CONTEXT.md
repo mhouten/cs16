@@ -1,6 +1,19 @@
 # Portable project handoff
 
-Updated 31 October 2026. This folder is the user's chosen project base.
+Updated 25 November 2026. This folder is the user's chosen project base.
+
+## November 25 rebuild and GitHub downloads
+
+Release `v2026.11.25` restores the README download URLs. The repository had no
+GitHub release when the 404 was investigated. The three packages were rebuilt
+from the original local Slash source and the same five extra maps, using the
+official Xash3D FWGS release from November 24 (commit
+`bc1b4515e1f61ebdb76465b498aec1bedde12217`) and CS16Client from November 23.
+The lock file records the exact archives. All 4,960 shared game-content hashes
+match the October build, including the 72 maps and 41 navigation files.
+
+Use the latest `VERIFICATION.json` for this rebuild's test results. The October
+sections below describe earlier builds and tests with the previous runtimes.
 
 ## Current product
 
@@ -31,11 +44,10 @@ the default `config.cfg`; do not force it from autoexec on every launch.
 
 ## Source and build inputs
 
-The engine release was checked on 30 October 2026: Xash3D FWGS continuous commit
-`3daa67eca9a9f9651b37d63babe6dfc8ec6961ac`. CS16Client continuous release was
-published 23 October 2026. Exact archive names, official download URLs and SHA256
-values are in `Rebuild/upstream-lock.json`. Do not describe these as freshly
-checked latest releases after that date without verifying upstream again.
+The packaged engine and client were checked on 25 November 2026. Exact archive
+names, official download URLs and SHA256 values are in
+`Rebuild/upstream-lock.json`. Check upstream again before describing these as the
+latest continuous releases on a later date.
 
 Slash's source was a local `cs-slash.rar` supplied by the user. Its original
 download URL is unknown. The small rebuild kit does not contain a full game installation or engine
@@ -125,8 +137,8 @@ directory, old temporary build paths, or memory service to understand this folde
 The user requested `git@github.com:mhouten/cs16.git`, all three OS packages in
 GitHub Releases, and a concise README with public downloads and independent
 rebuild steps. The repository was public and empty when checked on 31 October.
-Large archives stay local and are excluded from Git; publish them as release
-assets under `v2026.10.31` using `Rebuild/Scripts/publish-release.py`.
+Large archives are excluded from Git and are delivered as GitHub Release assets
+using `Rebuild/Scripts/publish-release.py`.
 
 The builder now accepts `--source` (with the existing `--slash` alias). A Steam
 folder containing `valve/` and `cstrike/` uses the public preset from
@@ -145,16 +157,11 @@ matched to the snapshot. Other variants have not been hash-verified. The old
 a shared game asset, not a saved user setting. Public inputs now allow a fresh
 installation with all map names; exact old Steam/resource revisions can differ.
 
-Source was successfully pushed and verified on GitHub: initial source commit
-`b5e3ee587bf4e0c8feb20022639d606695a1fde0` on `main`. Release asset publication
-remains pending: `gh auth status` reports no login and the release publisher
-stopped before making remote changes. `RELEASING.md` has the exact next command.
-This session initially had no `gh` login or GitHub token, and SSH resolution
-failed. The user was asked to run `gh auth login --hostname github.com
---git-protocol ssh --web` in Terminal. Do not claim the release has been published until its assets are checked
-on GitHub. The workspace protects its `.git`
-path; an isolated temporary checkout is used for publishing, without changing
-that protected path.
+The initial GitHub source commit was
+`b5e3ee587bf4e0c8feb20022639d606695a1fde0`. The October upload stopped at GitHub
+authentication. The November session verified that the authenticated account has
+push access. The workspace protects its `.git` path, so an isolated checkout is
+used to commit and push the release metadata.
 
 ## Optional host modes and manual upgrade — 31 October 2026
 
@@ -230,9 +237,7 @@ authentication is needed, the official broker currently supports Linux; authenti
 account ownership and server acceptance remain required. The user was asked for
 a real Slash server address for connection testing; none has been supplied.
 
-GitHub Release upload still requires gh authentication. Source publication is
-authorized and should be kept synchronized through the isolated checkout. The
-local WORK_STATE.json tracks progress when memory tools are unavailable.
+The local `WORK_STATE.json` tracks progress when memory tools are unavailable.
 
 ## Original documentation restoration — 31 October
 
