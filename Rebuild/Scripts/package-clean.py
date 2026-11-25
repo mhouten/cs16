@@ -274,9 +274,10 @@ int main(int argc, char **argv) {
     return resources / 'Game'
 
 
-def linux_launcher(folder, icons):
+def linux_launcher(folder, icons, launcher_source=None):
     launcher = folder / 'Play'
-    launcher.write_text('''#!/bin/sh
+    if launcher_source is None:
+        launcher.write_text('''#!/bin/sh
 set -eu
 game="$(CDPATH='' cd -- "$(dirname -- "$0")/Game" && pwd)"
 # Register the normal application-menu entry and icon on the user's first run.
@@ -297,6 +298,8 @@ export LD_LIBRARY_PATH="$game${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 cd "$game"
 exec ./xash3d -game cstrike "$@"
 ''')
+    else:
+        shutil.copyfile(launcher_source, launcher)
     launcher.chmod(0o755)
     # No absolute installation paths are embedded in the portable launcher.
     desktop = folder / 'Counter-Strike.desktop'

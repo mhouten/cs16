@@ -1,0 +1,18 @@
+diff --git a/regamedll/public/FileSystem.cpp b/regamedll/public/FileSystem.cpp
+--- a/regamedll/public/FileSystem.cpp
++++ b/regamedll/public/FileSystem.cpp
+@@ -33,7 +33,13 @@ CSysModule *g_pFileSystemModule = nullptr;
+ 
+ bool FileSystem_Init()
+ {
+-	g_pFileSystemModule = Sys_LoadModule(STDIO_FILESYSTEM_LIB);
++#ifdef __linux__
++	// Xash3D changes directory to the writable profile. Resolve the
++	// packaged filesystem through this module's RUNPATH first.
++	g_pFileSystemModule = reinterpret_cast<CSysModule *>(dlopen(STDIO_FILESYSTEM_LIB, RTLD_NOW));
++#endif
++	if (!g_pFileSystemModule)
++		g_pFileSystemModule = Sys_LoadModule(STDIO_FILESYSTEM_LIB);
+ 	if (!g_pFileSystemModule)
+ 	{
+ 		return false;

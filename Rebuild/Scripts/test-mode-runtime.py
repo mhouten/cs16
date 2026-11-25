@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read real native Mac server cvars after switching every optional host mode."""
+"""Read native server cvars after switching every optional host mode."""
 import argparse
 import importlib.util
 import json
@@ -13,11 +13,19 @@ import time
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--app', type=Path, required=True)
+    package = parser.add_mutually_exclusive_group(required=True)
+    package.add_argument('--app', type=Path, help='macOS Counter-Strike app bundle')
+    package.add_argument('--launcher', type=Path, help='Linux Play launcher')
     parser.add_argument('--report', type=Path, required=True)
     parser.add_argument('--upgrade-profile', action='store_true',
                         help='Install features in an isolated user profile for an older app')
     args = parser.parse_args()
+    if args.app:
+        launcher = args.app.resolve() / 'Contents/MacOS/CounterStrike'
+        data = args.app.resolve() / 'Contents/Resources/Game'
+    else:
+        launcher = args.launcher.resolve()
+        data = launcher.parent / 'Game'
     definitions = json.loads((Path(__file__).resolve().parent.parent / 'Features/modes.json').read_text())
     reset = definitions['reset']
     probes = []
@@ -37,15 +45,16 @@ def main():
             spec = importlib.util.spec_from_file_location('features', Path(__file__).with_name('optional-features.py'))
             features = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(features)
-            features.install(Path(tmp), args.app.resolve() / 'Contents/Resources/Game')
+            features.install(Path(tmp), data)
         # The dispatcher queues scripts; run probes through a later entry so
         # earlier startup hooks finish executing before checking their aliases.
         (saved / 'userconfig.d').mkdir(exist_ok=True)
         (saved / 'userconfig.d/zz-mode-probe.cfg').write_text(script)
         (saved / 'server.cfg').write_text('exec modes/_reset.cfg\nexec gwlistenserver.cfg\nuserconfigd\n')
-        env = dict(os.environ, CS16_USERDIR=tmp, SDL_VIDEODRIVER='dummy', SDL_AUDIODRIVER='dummy')
+        env = dict(os.environ, CS16_USERDIR=tmp, CS16_NO_DESKTOP='1',
+                   SDL_VIDEODRIVER='dummy', SDL_AUDIODRIVER='dummy')
         with logfile.open('wb') as log:
-            process = subprocess.Popen([str(args.app.resolve() / 'Contents/MacOS/CounterStrike'),
+            process = subprocess.Popen([str(launcher),
                                         '-dedicated', '-noip', '-noip6', '+maxplayers', '16', '+map', 'de_dust2'],
                                        env=env, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
             try:

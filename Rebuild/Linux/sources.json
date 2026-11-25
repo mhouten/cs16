@@ -1,0 +1,63 @@
+{
+  "engine": {
+    "url": "https://github.com/FWGS/xash3d-fwgs.git",
+    "commit": "bc1b4515e1f61ebdb76465b498aec1bedde12217",
+    "submodules": [
+      "3rdparty/MultiEmulator",
+      "3rdparty/bzip2/bzip2",
+      "3rdparty/extras/xash-extras",
+      "3rdparty/freevgui",
+      "3rdparty/gl-wes-v2",
+      "3rdparty/gl4es/gl4es",
+      "3rdparty/libbacktrace/libbacktrace",
+      "3rdparty/libogg/libogg",
+      "3rdparty/library_suffix",
+      "3rdparty/mainui",
+      "3rdparty/mbedtls/mbedtls",
+      "3rdparty/mpg123/mpg123",
+      "3rdparty/nanogl",
+      "3rdparty/opus/opus",
+      "3rdparty/opusfile/opusfile",
+      "3rdparty/vorbis/vorbis-src"
+    ]
+  },
+  "client": {
+    "url": "https://github.com/FWGS/cs16-client.git",
+    "commit": "4120cba6ca205bed0e0b5e02a9ed51e08d73b080",
+    "extra_submodules": [],
+    "submodules": [
+      "3rdparty/ReGameDLL_CS",
+      "3rdparty/mainui_cpp",
+      "3rdparty/miniutl",
+      "3rdparty/yapb"
+    ]
+  },
+  "archives": {
+    "sdl.tar.gz": {
+      "url": "https://github.com/libsdl-org/SDL/releases/download/release-2.32.10/SDL2-2.32.10.tar.gz",
+      "sha256": "5f5993c530f084535c65a6879e9b26ad441169b3e25d789d83287040a9ca5165"
+    },
+    "ffmpeg.tar.xz": {
+      "url": "https://github.com/FWGS/FFmpeg-Builds/releases/download/latest/ffmpeg-n9.0-latest-linux64-lgpl-shared-minimal-9.0.tar.xz",
+      "sha256": "5401d116df1090026443864af8323e05daba91695007fddca5b55c12ad878b0a"
+    },
+    "freetype.tar.gz": {
+      "url": "https://codeload.github.com/freetype/freetype/tar.gz/refs/tags/VER-2-14-3",
+      "sha256": "dc49de6b01a266eef4876a4dd34d9842c475d3e28ff2eff63bd2fb760ab56261"
+    },
+    "patchelf.tar.gz": {
+      "url": "https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0.tar.gz",
+      "sha256": "64de10e4c6b8b8379db7e87f58030f336ea747c0515f381132e810dbf84a86e7"
+    }
+  },
+  "resources": {
+    "xash3d-fwgs-linux-amd64.tar.gz": {
+      "url": "https://github.com/FWGS/xash3d-fwgs/releases/download/continuous/xash3d-fwgs-linux-amd64.tar.gz",
+      "sha256": "61bded9b3b3b5503c1468f4c6b54071fa3879bc186ac9c5d71c8d2a5e3ddac9a"
+    },
+    "CS16Client-Linux-x86_64.tar.gz": {
+      "url": "https://github.com/FWGS/cs16-client/releases/download/continuous/CS16Client-Linux-x86_64.tar.gz",
+      "sha256": "57de213f0eb8712a3219626f15082c01ed9c8f9c1922771fdd35fc3f5a18313b"
+    }
+  }
+}

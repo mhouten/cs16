@@ -1,0 +1,37 @@
+name: Linux release runtime validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: linux-release-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  runtime:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test packaging helpers
+        run: python3 -m unittest discover -s Rebuild/Scripts -p 'test_*.py'
+      - name: Build the pinned glibc 2.28 runtime and audit every ELF
+        run: |
+          python3 Rebuild/Scripts/build-linux-runtime.py \
+            --cache "$RUNNER_TEMP/cs16-inputs" --output "$RUNNER_TEMP/CS16 Linux"
+          cat "$RUNNER_TEMP/CS16 Linux/ELF-REPORT.txt" >> "$GITHUB_STEP_SUMMARY"
+      - name: Check relocated runtime as a non-root user
+        run: |
+          for image in \
+            quay.io/almalinuxorg/almalinux@sha256:18fb4641b9cb006781070b26180ea00e9d33c30ed0de7a1e3d6a30bc1eb09a2f \
+            public.ecr.aws/debian/debian@sha256:70509c95d1857a3704c0a5d92ee2e0adac95f612a9386889d70760bfd7c1ebba
+          do
+            docker run --rm --platform linux/amd64 --network none --user 65534:65534 \
+              --mount "type=bind,src=$RUNNER_TEMP/CS16 Linux,dst=/opt/CS16 Linux,readonly" \
+              -e CS16_CHECK_ONLY=1 -w /tmp "$image" '/opt/CS16 Linux/Play'
+          done

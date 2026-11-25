@@ -1,0 +1,89 @@
+#!/bin/sh
+set -eu
+
+fail() {
+    printf '%s\n' "Counter-Strike: $*" >&2
+    exit 1
+}
+
+[ "$(uname -s)" = Linux ] || fail "This package requires Linux."
+[ "$(uname -m)" = x86_64 ] || fail "This package requires an x86_64 CPU and Linux userspace."
+# Linux reports the SSE3 CPU feature as pni. Some emulators expose no x86 flags.
+if [ -r /proc/cpuinfo ] && grep -q '^flags[[:space:]]*:' /proc/cpuinfo &&
+   ! grep -Eq '^flags[[:space:]]*:.*[[:space:]](pni|sse3)([[:space:]]|$)' /proc/cpuinfo; then
+    fail "The Counter-Strike game server module requires an x86_64 CPU with SSE3."
+fi
+
+launcher=$(readlink -f -- "$0") || fail "Could not resolve the launcher path."
+app=$(CDPATH='' cd -- "$(dirname -- "$launcher")" && pwd -P) ||
+    fail "Could not find the installation directory."
+game=$app/Game
+engine=$game/xash3d
+[ -x "$engine" ] || fail "Missing executable Game/xash3d. Re-extract the full tar.gz on a filesystem that permits execution."
+
+glibc=$(getconf GNU_LIBC_VERSION 2>/dev/null) ||
+    fail "This package requires glibc 2.28 or newer. musl-based distributions such as Alpine need a separate build."
+case "$glibc" in
+    'glibc '*) version=${glibc#glibc } ;;
+    *) fail "This package requires glibc 2.28 or newer." ;;
+esac
+major=${version%%.*}
+minor=${version#*.}
+minor=${minor%%.*}
+case "$major:$minor" in
+    *[!0-9:]*|:*|*:) fail "Could not identify the glibc version ($version)." ;;
+esac
+if [ "$major" -lt 2 ] || { [ "$major" -eq 2 ] && [ "$minor" -lt 28 ]; }; then
+    fail "Found glibc $version. Use a distribution with glibc 2.28 or newer."
+fi
+
+loader=/lib64/ld-linux-x86-64.so.2
+[ -x "$loader" ] || fail "Missing $loader. Install or use an x86_64 glibc Linux system."
+# The engine opens modules at runtime, so checking only the executable misses
+# missing library and symbol versions in the UI, client and game server.
+for name in xash3d libxash.so filesystem_stdio.so libmenu.so \
+    libref_gl.so libref_gl4es.so libref_gles1.so libref_gles2.so libref_gles3compat.so libref_null.so \
+    libSDL2-2.0.so.0 libavcodec.so.63 libavformat.so.63 libavutil.so.61 libswresample.so.7 libswscale.so.10 \
+    cstrike/cl_dlls/client_amd64.so cstrike/cl_dlls/menu_amd64.so cstrike/dlls/cs_amd64.so; do
+    binary=$game/$name
+    [ -f "$binary" ] || fail "Missing $name. Re-extract the full tar.gz."
+    if ! dependencies=$(LC_ALL=C "$loader" --list "$binary" 2>&1); then
+        printf '%s\n' "$dependencies" >&2
+        fail "Cannot load $name. Restore the original Game directory and check that the host provides libstdc++.so.6 and libgcc_s.so.1."
+    fi
+done
+
+if [ "${CS16_CHECK_ONLY:-}" = 1 ]; then
+    printf '%s\n' "Counter-Strike: Linux ELF dependencies available (glibc $version)."
+    exit 0
+fi
+
+# Preserve existing in-place saves. A writable profile is also available for a
+# read-only install or isolated test.
+profile=${CS16_USERDIR:-"$game"}
+if [ "$profile" != "$game" ]; then
+    mkdir -p -- "$profile" || fail "Could not create CS16_USERDIR."
+    profile=$(CDPATH='' cd -- "$profile" && pwd -P) || fail "Could not open CS16_USERDIR."
+    mkdir -p -- "$profile/cstrike" || fail "Could not initialize the writable profile."
+    export XASH3D_RODIR="$game"
+fi
+[ -w "$profile" ] || fail "Game settings need a writable directory. Set CS16_USERDIR to a writable profile directory."
+
+# Register the application menu entry for this user only.
+if [ -n "${HOME:-}" ] && [ -z "${CS16_NO_DESKTOP:-}" ]; then
+    (
+        data=${XDG_DATA_HOME:-"$HOME/.local/share"}
+        mkdir -p "$data/applications" "$data/icons/hicolor/128x128/apps"
+        cp "$game/CounterStrike.png" "$data/icons/hicolor/128x128/apps/counter-strike-complete.png"
+        escaped=$(printf '%s' "$app/Play" | sed 's/[\\"\x60$]/\\&/g; s/\\/\\\\/g; s/%/%%/g')
+        printf '%s\n' '[Desktop Entry]' 'Type=Application' 'Name=Counter-Strike 1.6' \
+            "Exec=\"$escaped\"" 'Icon=counter-strike-complete' 'Terminal=false' \
+            'Categories=Game;ActionGame;' 'StartupWMClass=CounterStrike' \
+            > "$data/applications/counter-strike-complete.desktop"
+    ) 2>/dev/null || true
+fi
+
+export XASH3D_BASEDIR="$profile"
+export SDL_VIDEO_X11_WMCLASS=CounterStrike
+cd -- "$game"
+exec "$engine" -game cstrike "$@"

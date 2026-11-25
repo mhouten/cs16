@@ -5,6 +5,7 @@ Run --help for inputs. No original Windows game executable is ever run.
 """
 import argparse
 from datetime import datetime, timezone
+import gzip
 import hashlib
 import importlib.util
 import json
@@ -286,36 +287,30 @@ trainmap "t0a0"
     return report
 
 
-def fetch_releases(cache, platforms):
-    """Verify cached files against current GitHub metadata; fetch missing/changed files."""
+def verify_releases(cache, platforms, fetch):
+    """Resolve official archive URLs through the checked-in checksum lock."""
+    lock = json.loads((ROOT / 'upstream-lock.json').read_text())
+    if 'Linux' in platforms:
+        lock.update(json.loads((ROOT / 'Linux/sources.json').read_text())['resources'])
     cache.mkdir(parents=True, exist_ok=True)
     result = {}
-    for repo, index in [('FWGS/xash3d-fwgs', 0), ('FWGS/cs16-client', 1)]:
-        url = f'https://api.github.com/repos/{repo}/releases/tags/continuous'
-        req = urllib.request.Request(url, headers={'User-Agent': 'Slash-native-builder'})
-        with urllib.request.urlopen(req, timeout=45) as stream:
-            metadata = json.load(stream)
-        for system in platforms:
-            name = pack.PLATFORMS[system][index]
-            asset = next(a for a in metadata['assets'] if a['name'] == name)
-            target = cache / name
-            expected = asset.get('digest')
-            if not expected or not expected.startswith('sha256:'):
-                raise RuntimeError(f'GitHub did not publish a SHA256 digest for {name}.')
-            if not target.is_file() or 'sha256:' + digest(target) != expected:
-                partial = target.with_name(target.name + '.partial')
-                try:
-                    with urllib.request.urlopen(asset['browser_download_url'], timeout=120) as src, partial.open('wb') as dst:
-                        shutil.copyfileobj(src, dst)
-                    if 'sha256:' + digest(partial) != expected:
-                        raise RuntimeError(f'Checksum mismatch: {name}')
-                    partial.replace(target)
-                finally:
-                    partial.unlink(missing_ok=True)
-            result[name] = {'url': asset['browser_download_url'], 'sha256': expected[7:],
-                            'release_published_at': metadata['published_at'],
-                            'target_commitish': metadata['target_commitish']}
-    write_json(cache / 'slash-upstream-lock.json', result)
+    for name in dict.fromkeys(name for system in platforms for name in pack.PLATFORMS[system][:2]):
+        entry = lock[name]
+        target = cache / name
+        if not target.is_file() and fetch:
+            with tempfile.TemporaryDirectory(prefix='download-', dir=cache) as temporary:
+                partial = Path(temporary) / name
+                request = urllib.request.Request(entry['url'], headers={'User-Agent': 'cs16-builder'})
+                with urllib.request.urlopen(request, timeout=120) as response, partial.open('xb') as stream:
+                    shutil.copyfileobj(response, stream)
+                if digest(partial) != entry['sha256']:
+                    raise RuntimeError(f'Locked artifact changed upstream: {name}. Use a cached copy with the recorded SHA-256.')
+                partial.replace(target)
+        if not target.is_file():
+            raise RuntimeError(f'Missing {name}; put it in --downloads or use --fetch.')
+        if digest(target) != entry['sha256']:
+            raise RuntimeError(f'Checksum mismatch: {target}. Use the exact archive in upstream-lock.json.')
+        result[name] = entry['sha256']
     return result
 
 
@@ -382,7 +377,7 @@ def portable_freetype(menu, library):
         pack.run('codesign', '--force', '--sign', '-', current, stderr=subprocess.DEVNULL)
 
 
-def assemble(system, data, cache, dest, icons, work, freetype, menu_style='default'):
+def assemble(system, data, cache, dest, icons, work, freetype, menu_style='default', linux_runtime=None):
     with tempfile.TemporaryDirectory(prefix=system + '-', dir=work) as tmp:
         tmp = Path(tmp)
         engine, client, package = tmp / 'engine', tmp / 'client', tmp / 'package'
@@ -406,18 +401,28 @@ def assemble(system, data, cache, dest, icons, work, freetype, menu_style='defau
                         CFBundleIdentifier='local.counterstrike.complete' if menu_style == 'default' else 'local.counterstrike.slash')
             plist.write_bytes(plistlib.dumps(info))
         elif system == 'Linux':
-            game = pack.linux_launcher(package, icons)
-            for name in ('Play', 'Counter-Strike.desktop'):
-                path = package / name
-                path.write_text(path.read_text().replace('Counter-Strike 1.6',
-                                'Counter-Strike 1.6' if menu_style == 'default' else 'Counter-Strike Slash')
-                                .replace('counter-strike', 'counter-strike-complete' if menu_style == 'default' else 'counter-strike-slash'))
+            game = pack.linux_launcher(package, icons, ROOT / 'Linux/Play')
+            desktop = package / 'Counter-Strike.desktop'
+            desktop.write_text(desktop.read_text().replace('Icon=counter-strike\n', 'Icon=counter-strike-complete\n'))
+            if menu_style == 'slash':
+                for path in (package / 'Play', desktop):
+                    path.write_text(path.read_text().replace('Counter-Strike 1.6', 'Counter-Strike Slash')
+                                    .replace('counter-strike-complete', 'counter-strike-slash'))
         else:
             game = pack.windows_launcher(package, icons)
         shutil.copytree(data, game)
         if system != 'macOS':
             shutil.copytree(game / 'Documentation', package / 'Documentation')
-        for source in native.iterdir():
+        if system == 'Linux':
+            for source in sorted((linux_runtime / 'Game').rglob('*')):
+                if source.is_dir() and not source.is_symlink():
+                    continue
+                target = game / source.relative_to(linux_runtime / 'Game')
+                if target.exists() or target.is_symlink():
+                    raise RuntimeError(f'Linux runtime overlaps game data: {target}')
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source, target, follow_symlinks=False)
+        for source in (() if system == 'Linux' else native.iterdir()):
             if source.name == executable or source.suffix.lower() in {'.dll', '.dylib', '.so'} or '.so.' in source.name:
                 if source.name in {'libmenu_tui.dylib', 'libmenu_tui.so', 'menu_tui.dll'}:
                     continue
@@ -441,7 +446,7 @@ def assemble(system, data, cache, dest, icons, work, freetype, menu_style='defau
             # Optional touch/YaPB data is retained from upstream, but touch input
             # is disabled by the desktop config. Do not replace the native bots.
             shutil.copyfile(source, target)
-        for folder in ('cl_dlls', 'dlls'):
+        for folder in (() if system == 'Linux' else ('cl_dlls', 'dlls')):
             for source in (client / 'cstrike' / folder).iterdir():
                 if source.suffix.lower() in {'.dll', '.dylib', '.so'} and source.name.lower().startswith(('client', 'menu', 'cs', 'mp')):
                     target = game / 'cstrike' / folder / source.name
@@ -450,6 +455,8 @@ def assemble(system, data, cache, dest, icons, work, freetype, menu_style='defau
         # Keep icons and application identity separate from Slash's game assets.
         if system == 'Linux':
             shutil.copyfile(icons / 'CounterStrike.png', game / 'CounterStrike.png')
+            # Xash3D's non-dedicated startup needs stuffcmds to schedule +arguments.
+            (game / 'cstrike/cstrike.rc').write_text('stuffcmds\n')
         (game / 'Licenses').mkdir()
         (game / 'Licenses/Components.txt').write_text('''Xash3D FWGS: https://github.com/FWGS/xash3d-fwgs (GPL)
 CS16Client/ReGameDLL/MainUI: https://github.com/FWGS/cs16-client (GPL)
@@ -480,6 +487,9 @@ Upstream font licenses are preserved in extras.pk3.
             goroot = Path(subprocess.check_output(['go', 'env', 'GOROOT'], text=True).strip())
             license_file = next(p for p in (goroot / 'LICENSE', goroot.parent / 'LICENSE') if p.is_file())
             shutil.copyfile(license_file, game / 'Licenses/Go.txt')
+        if system == 'Linux':
+            pack.run(sys.executable, ROOT / 'Scripts/audit-linux.py', package,
+                     '--report', work / 'Linux-ELF-REPORT.txt')
         shutil.copytree(package, dest, symlinks=True)
     print(system + ': assembled at ' + str(dest), flush=True)
 
@@ -496,8 +506,20 @@ def publish(system, source, output, menu_style='default'):
             pack.run('ditto', '-c', '-k', temporary, target)
     elif system == 'Linux':
         target = output / (stem + '.tar.gz')
-        with tarfile.open(target, 'w:gz', compresslevel=6) as archive:
-            archive.add(source, arcname=stem)
+        def portable_metadata(info):
+            info.uid = info.gid = info.mtime = 0
+            info.uname = info.gname = ''
+            return info
+
+        partial = target.with_suffix('.gz.partial')
+        try:
+            with partial.open('xb') as stream:
+                with gzip.GzipFile(filename='', mode='wb', fileobj=stream, mtime=0, compresslevel=6) as compressed:
+                    with tarfile.open(fileobj=compressed, mode='w') as archive:
+                        archive.add(source, arcname=stem, filter=portable_metadata)
+            partial.replace(target)
+        finally:
+            partial.unlink(missing_ok=True)
     else:
         target = output / (stem + '.zip')
         with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
@@ -520,7 +542,8 @@ def main():
     parser.add_argument('--work', type=Path, default=ROOT / 'build/slash-package', help='Fresh build directory (must not exist)')
     parser.add_argument('--icons', type=Path, default=next((p for p in (ROOT / 'Icons', ROOT / 'Assets/Icons') if p.is_dir()), ROOT / 'build/distribution/icons'))
     parser.add_argument('--freetype', type=Path, help='macOS FreeType dylib; brew install freetype is another option')
-    parser.add_argument('--fetch', action='store_true', help='Check current official releases and download/replace changed archives')
+    parser.add_argument('--fetch', action='store_true', help='Download missing archives and require the pinned SHA-256')
+    parser.add_argument('--linux-runtime', type=Path, help='Output of build-linux-runtime.py (required for Linux packages)')
     parser.add_argument('--data-only', action='store_true', help='Prepare portable Slash data/configs for manual assembly; no runtime archives needed')
     parser.add_argument('--menu', choices=['default', 'slash'], default='default', help='Default upstream native menus (recommended), or legacy Slash artwork/colors')
     parser.add_argument('--platforms', nargs='+', choices=list(pack.PLATFORMS), default=list(pack.PLATFORMS))
@@ -529,6 +552,10 @@ def main():
         value = getattr(args, field)
         if value is not None:
             setattr(args, field, value.expanduser().resolve())
+    if not args.data_only and 'Linux' in args.platforms:
+        if args.linux_runtime is None or not (args.linux_runtime / 'Game').is_dir():
+            parser.error('Linux packaging requires --linux-runtime from build-linux-runtime.py.')
+        args.linux_runtime = args.linux_runtime.resolve()
     if args.work.exists():
         raise RuntimeError('Use a fresh --work directory; already exists: ' + str(args.work))
     if args.output.exists() and any(args.output.iterdir()):
@@ -538,12 +565,7 @@ def main():
     pack.BUILD = args.work
     # These helpers need Scripts/ next to the builder, including the Go source.
     pack.ROOT = ROOT
-    if args.fetch and not args.data_only:
-        fetch_releases(args.downloads, args.platforms)
-    for system in ([] if args.data_only else args.platforms):
-        for name in pack.PLATFORMS[system][:2]:
-            if not (args.downloads / name).exists():
-                raise RuntimeError(f'Missing {name}; put it in --downloads or use --fetch.')
+    release_archives = {} if args.data_only else verify_releases(args.downloads, args.platforms, args.fetch)
     source = args.slash
     if source.is_file():
         unpacked = args.work / 'slash-source'
@@ -554,18 +576,26 @@ def main():
         source = candidates[0]
     data = args.work / 'slash-data'
     report = make_data(source, data, args.menu, [p.expanduser().resolve() for p in args.extra_map])
-    report['created_utc'] = datetime.now(timezone.utc).isoformat()
+    epoch = os.environ.get('SOURCE_DATE_EPOCH')
+    created = datetime.fromtimestamp(int(epoch), timezone.utc) if epoch else datetime.now(timezone.utc)
+    report['created_utc'] = created.isoformat()
     report['source_archive_sha256'] = digest(args.slash) if args.slash.is_file() else None
-    report['release_archives'] = {n: digest(args.downloads / n) for s in ([] if args.data_only else args.platforms) for n in pack.PLATFORMS[s][:2]}
+    report['release_archives'] = release_archives
+    if args.linux_runtime:
+        report['linux_runtime_sources'] = json.loads((ROOT / 'Linux/sources.json').read_text())
     write_json(args.work / 'content-manifest.json', report)
     (data / 'slash-build.txt').write_text('Counter-Strike 1.6 native edition; Slash gameplay content\nMenu: ' + args.menu + '\n' + report['created_utc'] + '\n')
     if args.data_only:
         print('Prepared portable data: ' + str(data))
         return
+    archives = []
     for system in args.platforms:
         dest = args.work / 'packages' / system
-        assemble(system, data, args.downloads, dest, args.icons, args.work, args.freetype, args.menu)
-        publish(system, dest, args.output, args.menu)
+        assemble(system, data, args.downloads, dest, args.icons, args.work, args.freetype, args.menu, args.linux_runtime)
+        archives.append(publish(system, dest, args.output, args.menu))
+    (args.output / 'SHA256SUMS.txt').write_text(
+        ''.join(f'{digest(archive)}  {archive.name}\n' for archive in sorted(archives))
+    )
     print('Content inventory: ' + str(args.work / 'content-manifest.json'))
 
 
