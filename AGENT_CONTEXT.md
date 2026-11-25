@@ -268,3 +268,29 @@ document links/content hashes, Linux runtime links/modes and Mac signature after
 archive extraction. Current native mode/dispatcher checks passed again; the 72
 earlier headless map checks cover unchanged maps/binaries. Graphical browser/menu
 clicks, Windows/Linux execution and actual old-server connections remain untested.
+
+## Linux portability branch
+
+The Linux candidate is in `build/linux-portability/release/`. The old
+November archive links Counter-Strike client and ReGameDLL libm imports to
+`GLIBC_2.43`. Other engine, renderer, UI and SDL modules also exceed the
+older ABI. AlmaLinux 8 and Debian 11 reproduced the old loader failure.
+
+The candidate uses the pinned AlmaLinux 8 glibc 2.28 environment and source
+revisions in `Rebuild/Linux/sources.json`. The stage and archive audits
+passed for 19 ELF objects. All 4,960 shared files, 72 maps, 41 navs and both
+resource PK3s match the previous package. The Linux launcher preserves
+player arguments, and a separate writable profile supports read-only
+installs. ReGameDLL resolves the packaged filesystem through its RUNPATH.
+
+AlmaLinux 8, Debian 11, Ubuntu 20.04, Fedora 44 and Arch passed non-root
+container startup checks. All 72 dedicated map startups, nine host modes,
+nine Classic resets and a native bot join passed. Fedora virtual X11 and
+Wayland passed local-game sign-on in windowed and fullscreen modes. The
+X11 audio test captured nonzero PulseAudio samples. A client completed
+sign-on to a second container over an isolated IPv4 LAN.
+
+See `Rebuild/Linux/PORTABILITY.md` and the staged verification and checksum
+reports. Physical desktops, input/audio hardware, LAN discovery and public
+servers remain unverified. Git history is local on `fix/linux-portability`.
+The archives in the project root still correspond to the November release.

@@ -46,6 +46,8 @@ def main():
         checksums[name] = expected
     if missing := set(PACKAGES + EXTRAS) - checksums.keys():
         raise SystemExit('Missing checksums: ' + ', '.join(sorted(missing)))
+    subprocess.run([sys.executable, str(ROOT / 'Rebuild/Scripts/audit-linux.py'),
+                    str(ROOT / 'Counter-Strike-1.6-linux.tar.gz')], check=True)
     view = ['gh', 'release', 'view', args.tag, '--repo', args.repo,
             '--json', 'databaseId,isDraft,isPrerelease,targetCommitish,url']
     existing = subprocess.run(view, capture_output=True, text=True)

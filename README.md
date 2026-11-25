@@ -18,6 +18,12 @@ LAN hosting and readable console text.
 Windows may need [Visual C++ x64](https://aka.ms/vc14/vc_redist.x64.exe).
 Keep `Game` beside the Windows/Linux launcher. Copy the Mac app to `/Applications`.
 
+The source-built Linux package targets **x86_64 with SSE3 and glibc 2.28+** with the host's
+GCC C/C++ runtimes, OpenGL driver, X11 or Wayland session and audio stack.
+Extract the archive and run `./Play` as your normal user. The player needs
+neither Docker nor a compiler. The November 25 Linux release predates this
+rebuild. [Linux test matrix, system requirements and troubleshooting](Rebuild/Linux/PORTABILITY.md).
+
 ## Build from Steam and public maps, without our game packages
 
 1. Install your owned [Counter-Strike on Steam](https://store.steampowered.com/app/10/).
@@ -37,18 +43,27 @@ Keep `Game` beside the Windows/Linux launcher. Copy the Mac app to `/Application
 
 ```sh
 xcode-select --install
-brew install freetype
+brew install freetype binutils
+export PATH="$(brew --prefix binutils)/bin:$PATH"
+python3 Rebuild/Scripts/build-linux-runtime.py \
+  --cache Rebuild/downloads/linux --output Rebuild/build/linux-runtime
 python3 Rebuild/Scripts/package-slash.py --source /path/to/Half-Life \
   --fetch --platforms macOS Linux Windows \
+  --linux-runtime Rebuild/build/linux-runtime \
   --freetype "$(brew --prefix freetype)/lib/libfreetype.6.dylib" \
   --work Rebuild/build/all --output Rebuild/output
 ```
 
-**Linux:** install `libarchive-tools` and your distribution's libarchive package.
+**Linux:** install Docker for the build, GNU binutils and libarchive. The same
+runtime build runs on macOS with Docker Desktop.
 
 ```sh
+python3 Rebuild/Scripts/build-linux-runtime.py \
+  --cache Rebuild/downloads/linux --output Rebuild/build/linux-runtime
 python3 Rebuild/Scripts/package-slash.py --source /path/to/Half-Life \
-  --fetch --platforms Linux --work Rebuild/build/linux --output Rebuild/output-linux
+  --fetch --platforms Linux --linux-runtime Rebuild/build/linux-runtime \
+  --work Rebuild/build/linux --output Rebuild/output-linux
+python3 Rebuild/Scripts/audit-linux.py Rebuild/output-linux/Counter-Strike-1.6-linux.tar.gz
 ```
 
 **Windows PowerShell:** install Go/7-Zip and reopen the shell.
@@ -101,8 +116,12 @@ This creates the native game with bots and the downloaded maps. For a portable
 Mac `.app` with bundled libraries, the supplied icon, GUI launchers and the Slash
 configuration preset, use the builder above. Upstream setup:
 [CS16Client installation](https://github.com/FWGS/cs16-client#installation).
-Continuous URLs change; [upstream-lock.json](Rebuild/upstream-lock.json) records
-our packaged runtime snapshot.
+The direct Linux binary links above are for upstream manual installation and
+may require a newer glibc. Use the source build above for the older ABI.
+Continuous URLs change. `--fetch` verifies [the locked archive digests](Rebuild/upstream-lock.json).
+If an upstream link has rotated, place an archive with the recorded SHA-256
+in `--downloads`. Linux takes only the two resource PK3s from those archives.
+[Linux source and runtime input lock](Rebuild/Linux/sources.json).
 
 <details>
 <summary>All 47 custom map download links</summary>
